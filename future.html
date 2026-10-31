@@ -3,179 +3,353 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planet Port — 私有星域，随身跃迁</title>
-  <meta name="description" content="Planet Port：开源跨平台 ZeroTier 多行星客户端。多 Planet 并存、多网络同连、路由与 DNS 掌控。" />
+  <title>Planet Port · 每一次跃迁，都从选对一个 Planet 开始</title>
+  <meta name="description" content="Planet Port：跨平台 ZeroTier 客户端。多 Planet 并存、随时切换、路由与 DNS 掌控、Moon 支持。" />
   <link rel="icon" href="/assets/planet-port-logo.webp" />
   <link rel="stylesheet" href="/styles/future.css" />
   <script>document.documentElement.classList.add('js')</script>
 </head>
-<body class="f-body">
-  <canvas id="starfield" aria-hidden="true"></canvas>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
 
-  <nav class="f-nav">
-    <a class="f-nav__brand" href="#top">
-      <img src="/assets/planet-port-logo.webp" alt="Planet Port" width="28" height="28" />
-      <span>PLANET&nbsp;PORT</span>
+  <nav class="nav">
+    <a class="nav__brand" href="#top">
+      <img src="/assets/planet-port-logo.webp" alt="" width="26" height="26" />
+      <span>Planet Port</span>
     </a>
-    <div class="f-nav__links" id="navLinks">
-      <a href="#sector">星域</a>
-      <a href="#abilities">能力</a>
-      <a href="#cockpits">座舱</a>
-      <a href="#sequence">跃迁</a>
-      <a href="#starmap">星图</a>
-      <a href="#voyage">航线</a>
-      <a class="f-nav__github" href="https://github.com/planet-port" target="_blank" rel="noopener">GITHUB</a>
+    <div class="nav__links" id="navLinks">
+      <a href="#features">能力</a>
+      <a href="#roadmap">航线</a>
+      <a href="#proof">平台</a>
+      <a href="/modern.html">看现代版</a>
+      <a class="nav__gh" href="https://github.com/planet-port" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <button class="f-nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- 01 首屏：深空 + 轨道动画 -->
-  <header class="f-hero" id="top">
-    <div class="f-orbit" aria-hidden="true">
-      <div class="f-orbit__ring f-orbit__ring--1"></div>
-      <div class="f-orbit__ring f-orbit__ring--2"></div>
-      <div class="f-orbit__ring f-orbit__ring--3"></div>
-      <div class="f-orbit__planet f-orbit__planet--a"></div>
-      <div class="f-orbit__planet f-orbit__planet--b"></div>
+  <!-- Hero：120vh，巨型圆从右切入（母题 = 名字里的 planet） -->
+  <header class="hero" id="top">
+    <div class="hero__planet" aria-hidden="true">
+      <div class="hero__shot">
+        <img src="/assets/screenshots/ios-home.webp" alt="" width="620" height="1348" />
+        <span class="hero__fix hero__fix--row"></span>
+        <span class="hero__fix hero__fix--switch"></span>
+        <span class="hero__pill"><i></i></span>
+        <span class="hero__state"><i></i>已连接</span>
+      </div>
     </div>
-    <p class="f-hero__eyebrow">// PLANET PORT — MULTI-PLANET CLIENT</p>
-    <h1>私有星域，<br />随身跃迁。</h1>
-    <p class="f-hero__sub">
-      每颗 Planet 都是一片星域。Planet Port 让它们同机并存——
-      多 Planet 管理、多网络同连、路由与 DNS 全程掌控。
-    </p>
-    <div class="f-hero__cta">
-      <a class="f-btn f-btn--primary" href="#starmap">进入星图</a>
-      <a class="f-btn f-btn--ghost" href="https://github.com/planet-port" target="_blank" rel="noopener">GITHUB</a>
+    <div class="hero__inner">
+      <h1>每一次跃迁，<br />都从选对一个 Planet 开始。</h1>
+      <p class="hero__sub">Planet Port 是跨平台 ZeroTier 客户端：多 Planet 并存、<span class="nb">随时切换</span>，路由与 DNS 全程可控，移动端与桌面端同行。</p>
+      <div class="hero__cta">
+        <a class="btn" href="https://github.com/planet-port" target="_blank" rel="noopener">获取 Planet Port</a>
+        <a class="btn btn--ghost" href="#roadmap">查看航线图</a>
+      </div>
+      <p class="hero__facts">已发布：iOS · Android · 鸿蒙 · macOS CLI。macOS GUI 与 Linux 在路上。</p>
     </div>
   </header>
 
-  <main class="f-main">
-    <!-- 02 星域概念 -->
-    <section class="f-section" id="sector" data-reveal>
-      <div class="f-section__tag">01 / 星域</div>
-      <h2>每颗 Planet，一片星域</h2>
-      <p class="f-lead">
-        ZeroTier 网络由 Planet 根服务器指引方向。官方只有一颗；你自建的每一颗，
-        都是一片私有星域。Planet Port 让多份 Planet 同机并存——
-        切换 Planet 只是换一条航线，你的网络与配置原样保留。
-      </p>
+  <main id="main">
+    <!-- intro：短标题 + lead 段落，内联圆形截图框（母题裁切） -->
+    <section class="intro" aria-label="引言">
+      <h2 class="intro__title" data-reveal>一份列表，<br />装下所有 Planet。</h2>
+      <p class="intro__lead" data-reveal>官方 Planet 与 <img class="thumb" src="/assets/screenshots/ios-home.webp" alt="Planet 列表界面截图" width="34" height="32" loading="lazy" />私有根服务器 同时收进一份列表，切换只是 <img class="thumb" src="/assets/screenshots/ios-import.webp" alt="添加 Planet 界面截图" width="34" height="32" loading="lazy" />一条命令，多个网络 <img class="thumb thumb--keep" src="/assets/screenshots/android-home.webp" alt="Android 端 Planet 列表截图" width="34" height="32" loading="lazy" />同时在线，路由与 DNS <img class="thumb thumb--keep" src="/assets/screenshots/android-settings.webp" alt="DNS 设置界面截图" width="34" height="32" loading="lazy" />听你指挥。</p>
     </section>
 
-    <!-- 03 能力舱段：HUD 卡片，功能原词 -->
-    <section class="f-section" id="abilities" data-reveal>
-      <div class="f-section__tag">02 / 能力舱段</div>
-      <h2>核心能力</h2>
-      <div class="f-hud-grid">
-        <article class="f-hud">
-          <span class="f-hud__no">CAP-01</span>
-          <h3>多 Planet 并存</h3>
-          <p>官方与多份私有 Planet 同机共存，别名管理、一键启停，互不干扰。</p>
-        </article>
-        <article class="f-hud">
-          <span class="f-hud__no">CAP-02</span>
-          <h3>多网络同连</h3>
-          <p>每 Planet 独立身份，join / leave 自如，网络与 peers 跨 Planet 聚合查询。</p>
-        </article>
-        <article class="f-hud">
-          <span class="f-hud__no">CAP-03</span>
-          <h3>路由与 DNS 掌控</h3>
-          <p>默认路由开关、dnsMode 三种模式，陈述式配置，脚本友好。</p>
-        </article>
-        <article class="f-hud">
-          <span class="f-hud__no">CAP-04</span>
-          <h3>Moon 支持</h3>
-          <p>orbit / deorbit、导入 .moon 文件，中继节点一样纳入管理。</p>
-        </article>
+    <!-- features：一句一开关，全宽色带 -->
+    <section class="feats" id="features" aria-label="能力">
+      <div class="band band--sand is-on" data-band>
+        <div class="band__grid">
+          <div class="band__text" data-reveal>
+            <h2 class="band__line">多 Planet 并存。</h2>
+            <p class="band__detail">官方与私有 Planet 同时登记，互不覆盖。</p>
+            <p class="band__effect">开 → 3 份 Planet 在列</p>
+          </div>
+          <img class="band__shot" src="/assets/screenshots/ios-home.webp" alt="iOS 端 Planet 列表截图" width="180" height="180" loading="lazy" data-reveal />
+          <button class="band__switch" type="button" role="switch" aria-checked="true" data-switch aria-label="多 Planet 并存" data-reveal><span class="band__knob"></span></button>
+        </div>
+      </div>
+
+      <div class="band band--cobalt is-on" data-band>
+        <div class="band__grid">
+          <div class="band__text" data-reveal>
+            <p class="band__line">一键切换。</p>
+            <p class="band__detail"><code>eval $(planet-port use company)</code> 全局生效。</p>
+            <p class="band__effect">开 → 当前：company</p>
+          </div>
+          <button class="band__switch" type="button" role="switch" aria-checked="true" data-switch aria-label="一键切换" data-reveal><span class="band__knob"></span></button>
+        </div>
+      </div>
+
+      <div class="band band--sand" data-band>
+        <div class="band__grid">
+          <div class="band__text" data-reveal>
+            <p class="band__line">多网络同连。</p>
+            <p class="band__detail">不同 Planet 下的网络并行在线。</p>
+            <p class="band__effect">开 → 5 个网络在线</p>
+          </div>
+          <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="多网络同连" data-reveal><span class="band__knob"></span></button>
+        </div>
+      </div>
+
+      <div class="band band--cobalt" data-band>
+        <div class="band__grid">
+          <div class="band__text" data-reveal>
+            <p class="band__line">路由掌控。</p>
+            <p class="band__detail">routeViaZeroTier 逐网络设定流量走向。</p>
+            <p class="band__effect">开 → 流量走 ZeroTier</p>
+          </div>
+          <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="路由掌控" data-reveal><span class="band__knob"></span></button>
+        </div>
+      </div>
+
+      <div class="band band--sand" data-band>
+        <div class="band__grid">
+          <div class="band__text" data-reveal>
+            <p class="band__line">DNS 掌控。</p>
+            <p class="band__detail">dnsMode 三档：none / network / custom。</p>
+            <p class="band__effect">开 → 解析交给网络</p>
+          </div>
+          <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="DNS 掌控" data-reveal><span class="band__knob"></span></button>
+        </div>
+      </div>
+
+      <div class="band band--cobalt" data-band>
+        <div class="band__grid">
+          <div class="band__text" data-reveal>
+            <p class="band__line">Moon 支持。</p>
+            <p class="band__detail">orbit、deorbit 与 .moon 文件管理。</p>
+            <p class="band__effect">开 → Moon 已挂载</p>
+          </div>
+          <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="Moon 支持" data-reveal><span class="band__knob"></span></button>
+        </div>
       </div>
     </section>
 
-    <!-- 04 两个座舱：双端并重 -->
-    <section class="f-section" id="cockpits" data-reveal>
-      <div class="f-section__tag">03 / 两个座舱</div>
-      <h2>同一件事，两种方式</h2>
-      <p class="f-lead">移动端与桌面端做的是同一件事——行星管理，只是座舱不同。</p>
-      <div class="f-cockpits">
-        <div class="f-cockpit">
-          <span class="f-cockpit__tag">掌上终端 · MOBILE</span>
-          <h3>移动端 App</h3>
-          <p>iOS / Android / 鸿蒙原生 App。行星管理、网络开关、peers 状态，指尖完成。</p>
-          <div class="f-holo-strip" role="list">
-            <figure role="listitem"><img src="/assets/screenshots/ios-home.webp" alt="iOS 首页" loading="lazy" /></figure>
-            <figure role="listitem"><img src="/assets/screenshots/ios-import.webp" alt="iOS 导入 Planet" loading="lazy" /></figure>
-            <figure role="listitem"><img src="/assets/screenshots/ios-network.webp" alt="iOS 网络" loading="lazy" /></figure>
-            <figure role="listitem"><img src="/assets/screenshots/android-home.webp" alt="Android 首页" loading="lazy" /></figure>
-            <figure role="listitem"><img src="/assets/screenshots/android-import.webp" alt="Android 导入 Planet" loading="lazy" /></figure>
-            <figure role="listitem"><img src="/assets/screenshots/android-network.webp" alt="Android 网络" loading="lazy" /></figure>
-            <figure role="listitem"><img src="/assets/screenshots/android-settings.webp" alt="Android 设置" loading="lazy" /></figure>
+    <!-- how-it-works：50/50 + range 四档 -->
+    <section class="hw" id="how" data-stage="4" aria-label="使用步骤">
+      <div class="hw__left">
+        <div class="hw__clauses">
+          <div class="hw__clause" data-clause="1">
+            <h3 class="hw__word">添加</h3>
+            <p class="hw__text">把 Planet 收进列表，官方 Planet 原样保留。</p>
+            <code>planet-port planet add ./company.planet --name company</code>
+          </div>
+          <div class="hw__clause" data-clause="2">
+            <h3 class="hw__word">切换</h3>
+            <p class="hw__text">一条命令全局生效，之后的操作都指向这份 Planet。</p>
+            <code>eval $(planet-port use company)</code>
+          </div>
+          <div class="hw__clause" data-clause="3">
+            <h3 class="hw__word">联网</h3>
+            <p class="hw__text">多个网络可同时在线。</p>
+            <code>planet-port join 8056c2e21c000001</code>
+          </div>
+          <div class="hw__clause" data-clause="4">
+            <h3 class="hw__word">掌控</h3>
+            <p class="hw__text">routeViaZeroTier 定流量走向，dnsMode 定解析归属。</p>
           </div>
         </div>
-        <div class="f-cockpit">
-          <span class="f-cockpit__tag">舰桥主控 · DESKTOP</span>
-          <h3>桌面端 CLI</h3>
-          <p>
-            macOS CLI 已发布：特权 daemon 持有核心与虚拟网卡，CLI 只是薄客户端——
-            <strong>GUI 不开、隧道照跑</strong>。GUI 与 Linux / Windows 在路上。
-          </p>
-          <pre class="f-cli"><code>$ planet-port add ./my.planet --name company
-$ eval $(planet-port use company)
-$ planet-port join 8056c2e21c000001</code></pre>
+      </div>
+
+      <div class="hw__right" data-reveal>
+        <div class="ledger" data-ui="planet-port" role="group" aria-label="Planet Port 界面片段">
+          <div class="ledger__head">
+            <span>Planet</span>
+            <span class="ledger__count">3</span>
+          </div>
+          <div class="ledger__body">
+            <div class="ledger__row">
+              <span class="ledger__dot" aria-hidden="true"></span>
+              <span class="ledger__name">official</span>
+              <span class="ledger__src">内置</span>
+              <span class="ledger__num">2 网络</span>
+            </div>
+            <div class="ledger__row ledger__row--cur">
+              <span class="ledger__dot" aria-hidden="true"></span>
+              <span class="ledger__name">company</span>
+              <span class="ledger__src">company.planet</span>
+              <span class="ledger__num">3 网络</span>
+              <span class="ledger__pill" data-min="2">当前</span>
+            </div>
+            <div class="ledger__sub" data-min="3">
+              <span class="mono">8056c2e21c000001</span>
+              <span>在线</span>
+            </div>
+            <div class="ledger__sub" data-min="3">
+              <span class="mono">8056c2e21c000002</span>
+              <span>在线</span>
+            </div>
+            <div class="ledger__sub" data-min="3">
+              <span class="mono">8056c2e21c000003</span>
+              <span>在线</span>
+            </div>
+            <div class="ledger__row">
+              <span class="ledger__dot" aria-hidden="true"></span>
+              <span class="ledger__name">lab</span>
+              <span class="ledger__src">lab.planet</span>
+              <span class="ledger__num">1 网络</span>
+            </div>
+            <div class="ledger__cfg" data-min="4">
+              <span>routeViaZeroTier</span>
+              <span class="ledger__val">开</span>
+            </div>
+            <div class="ledger__cfg" data-min="4">
+              <span>dnsMode</span>
+              <span class="ledger__val">network</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hw__control" data-reveal>
+        <div class="hw__track">
+          <span class="hw__fill" id="hwFill" aria-hidden="true"></span>
+          <input class="hw__range" id="hwRange" type="range" min="1" max="4" step="1" value="4" aria-label="使用步骤" aria-valuetext="掌控" />
+        </div>
+        <div class="hw__stages" aria-hidden="false">
+          <span data-stage-name="1">01 添加</span>
+          <span data-stage-name="2">02 切换</span>
+          <span data-stage-name="3">03 联网</span>
+          <span data-stage-name="4" class="is-current">04 掌控</span>
         </div>
       </div>
     </section>
 
-    <!-- 05 跃迁序列 -->
-    <section class="f-section" id="sequence" data-reveal>
-      <div class="f-section__tag">04 / 跃迁序列</div>
-      <h2>三步接入</h2>
-      <ol class="f-seq">
-        <li><span>SEQ-01</span><h3>导入 Planet</h3><p>本地文件或 URL 导入，起一个好记的别名。</p></li>
-        <li><span>SEQ-02</span><h3>加入网络</h3><p>输入 Network ID，join 并随时 leave。</p></li>
-        <li><span>SEQ-03</span><h3>一键切换</h3><p>在任意 Planet 之间即时切换，无需重启服务。</p></li>
-      </ol>
-    </section>
-
-    <!-- 06 星图矩阵 -->
-    <section class="f-section" id="starmap" data-reveal>
-      <div class="f-section__tag">05 / 星图</div>
-      <h2>支持平台</h2>
-      <div class="f-starmap">
-        <div class="f-starmap__cell"><strong>iOS</strong><span>App</span><em class="ok">✅ 可用</em></div>
-        <div class="f-starmap__cell"><strong>Android</strong><span>App</span><em class="ok">✅ 可用</em></div>
-        <div class="f-starmap__cell"><strong>鸿蒙</strong><span>App</span><em class="ok">✅ 可用</em></div>
-        <div class="f-starmap__cell"><strong>macOS</strong><span>CLI</span><em class="ok">✅ 可用</em></div>
-        <div class="f-starmap__cell"><strong>macOS</strong><span>GUI</span><em class="plan">📐 规划中</em></div>
-        <div class="f-starmap__cell"><strong>Linux</strong><span>CLI</span><em class="wip">🚧 适配中</em></div>
-        <div class="f-starmap__cell"><strong>Windows</strong><span>CLI / GUI</span><em class="plan">📐 规划中</em></div>
+    <!-- showcase：One control blown up（live thing） -->
+    <section class="show" id="showcase" data-field="company">
+      <div class="show__head" data-reveal>
+        <h2>当前 Planet：<span data-show-name>company</span></h2>
+        <p class="show__sub">切换 Planet 在产品里就是这样一个动作：选一颗，网络跟着走。</p>
+      </div>
+      <div class="selector" data-ui="planet-port" role="group" data-reveal aria-label="选择 Planet">
+        <button class="selector__planet" type="button" data-planet="official" aria-pressed="false">
+          <span class="selector__name">official</span>
+          <span class="selector__data">2 网络 · 5 peers</span>
+        </button>
+        <button class="selector__planet is-active" type="button" data-planet="company" aria-pressed="true">
+          <span class="selector__name">company</span>
+          <span class="selector__data">3 网络 · 7 peers</span>
+        </button>
+        <button class="selector__planet" type="button" data-planet="lab" aria-pressed="false">
+          <span class="selector__name">lab</span>
+          <span class="selector__data">1 网络 · 2 peers</span>
+        </button>
       </div>
     </section>
 
-    <!-- 07 航线图 -->
-    <section class="f-section" id="voyage" data-reveal>
-      <div class="f-section__tag">06 / 航线图</div>
-      <h2>下一段航程</h2>
-      <ol class="f-voyage">
-        <li class="wip"><span>🚧 进行中</span><h3>Linux 适配</h3><p>数据面已通（多 planet 上线、join / 路由、跨节点连通已实机验证），服务层 systemd 与安装脚本适配中。</p></li>
-        <li class="plan"><span>📐 规划中</span><h3>macOS GUI</h3><p>Tauri 2 托盘常驻，作为既有 daemon 的薄客户端。</p></li>
-        <li class="plan"><span>📐 规划中</span><h3>Windows</h3><p>CLI 与 GUI，延续 daemon + 薄客户端架构。</p></li>
-        <li class="plan"><span>📐 规划中</span><h3>安装包分发</h3><p>deb / MSI 等系统安装包，逐步补齐。</p></li>
+    <!-- proof：平台瓷砖，圆形标记 -->
+    <section class="proof" id="proof">
+      <div class="tiles">
+        <div class="tile tile--head" data-reveal>
+          <h2>全平台行星管理</h2>
+        </div>
+        <div class="tile" data-reveal>
+          <img class="tile__shot" src="/assets/screenshots/ios-home.webp" alt="iOS 端网络清单截图" width="72" height="72" loading="lazy" />
+          <p class="tile__name">iOS App</p>
+          <p class="tile__state">已发布</p>
+        </div>
+        <div class="tile" data-reveal>
+          <img class="tile__shot" src="/assets/screenshots/android-network.webp" alt="Android 端网络详情截图" width="72" height="72" loading="lazy" />
+          <p class="tile__name">Android App</p>
+          <p class="tile__state">已发布</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
+          <p class="tile__name">鸿蒙 App</p>
+          <p class="tile__state">已发布</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
+          <p class="tile__name">macOS CLI</p>
+          <p class="tile__state">已发布</p>
+          <p class="tile__note">特权 daemon + 薄客户端，GUI 不开、隧道照跑。</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--design" aria-hidden="true"></span>
+          <p class="tile__name">macOS GUI</p>
+          <p class="tile__state">设计中</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--wip" aria-hidden="true"></span>
+          <p class="tile__name">Linux</p>
+          <p class="tile__state">进行中</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--plan" aria-hidden="true"></span>
+          <p class="tile__name">Windows</p>
+          <p class="tile__state">规划中</p>
+          <p class="tile__note">进度以仓库 releases 为准。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- roadmap：航线图 -->
+    <section class="road" id="roadmap">
+      <h2 data-reveal>航线图</h2>
+      <ol class="course">
+        <li class="course__stop" data-reveal>
+          <span class="course__node course__node--now" aria-hidden="true"></span>
+          <h3>此刻</h3>
+          <p>三端 App 与 macOS CLI 已发布。</p>
+        </li>
+        <li class="course__stop" data-reveal>
+          <span class="course__node course__node--next" aria-hidden="true"></span>
+          <h3>下一跃迁</h3>
+          <p>macOS GUI 与 Linux 客户端。</p>
+        </li>
+        <li class="course__stop" data-reveal>
+          <span class="course__node course__node--far" aria-hidden="true"></span>
+          <h3>远航</h3>
+          <p>Windows 客户端。</p>
+        </li>
       </ol>
-      <p class="f-note">以各仓库 README 为准，不承诺时间点。</p>
+    </section>
+
+    <!-- cta：First step already open -->
+    <section class="cta">
+      <div class="cta__left" data-reveal>
+        <p class="cta__close">跃迁前的检查单，<br />只剩一步</p>
+        <p class="cta__sub">真实的添加 Planet 对话框已经打开，选文件、起名字、确认。</p>
+        <a class="btn btn--dark" href="https://github.com/planet-port" target="_blank" rel="noopener">获取 Planet Port</a>
+      </div>
+      <div class="cta__right" data-reveal>
+        <form class="dialog" data-ui="planet-port" aria-label="添加 Planet 对话框" onsubmit="return false">
+          <p class="dialog__title">添加 Planet</p>
+          <label class="dialog__label" for="dlgPath">planet 文件路径</label>
+          <input class="dialog__input" id="dlgPath" type="text" value="./company.planet" />
+          <label class="dialog__label" for="dlgName">别名</label>
+          <input class="dialog__input" id="dlgName" type="text" value="company" />
+          <button class="dialog__btn" type="submit">添加</button>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer class="f-footer">
-    <img src="/assets/planet-port-logo.webp" alt="Planet Port" width="32" height="32" />
-    <div class="f-footer__links">
-      <a href="https://github.com/planet-port" target="_blank" rel="noopener">GITHUB</a>
-      <a href="https://github.com/planet-port" target="_blank" rel="noopener">PLANET-PORT-IOS</a>
-      <a href="https://github.com/planet-port" target="_blank" rel="noopener">PLANET-PORT-ANDROID</a>
-      <a href="https://github.com/planet-port" target="_blank" rel="noopener">PLANET-PORT-DESKTOP</a>
+  <!-- footer：The mark built large -->
+  <footer class="foot">
+    <svg class="foot__mark" data-reveal viewBox="0 0 1200 400" role="img" aria-label="Planet Port 圆形标记">
+      <path d="M 400 325 A 210 210 0 1 1 800 325" fill="none" stroke="#062b8a" stroke-width="14" />
+      <circle cx="428" cy="140" r="26" fill="#062b8a" />
+      <circle cx="772" cy="140" r="15" fill="#062b8a" />
+      <circle cx="600" cy="260" r="140" fill="#062b8a" />
+      <rect x="80" y="376" width="380" height="16" fill="#062b8a" />
+      <rect x="740" y="376" width="380" height="16" fill="#062b8a" />
+    </svg>
+    <div class="foot__row" data-reveal>
+      <p class="foot__brand">Planet Port</p>
+      <div class="foot__links">
+        <a href="https://github.com/planet-port" target="_blank" rel="noopener">GitHub 仓库</a>
+        <a href="/modern.html">现代版</a>
+        <a href="#features">能力</a>
+        <a href="#roadmap">航线</a>
+      </div>
     </div>
-    <p>非官方客户端，与 ZeroTier, Inc. 无隶属关系。</p>
+    <p class="foot__legal" data-reveal>Planet Port 是社区驱动的非官方 ZeroTier 客户端，与 ZeroTier, Inc. 无隶属关系。ZeroTier 是 ZeroTier, Inc. 的商标。</p>
   </footer>
 
-  <a class="f-switch" href="/modern.html" title="切换到现代风格">⌁ 现代风</a>
   <script type="module" src="/scripts/future.js"></script>
 </body>
 </html>

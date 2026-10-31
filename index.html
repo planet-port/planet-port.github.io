@@ -10,31 +10,42 @@
 </head>
 <body>
   <header class="entry-header">
-    <img src="/assets/planet-port-logo.webp" alt="Planet Port logo" width="40" height="40" />
-    <div>
-      <strong>Planet Port</strong>
-      <span>跨平台 ZeroTier 多行星客户端</span>
+    <div class="entry-brand">
+      <img src="/assets/planet-port-logo.webp" alt="Planet Port logo" width="44" height="44" />
+      <h1>Planet Port</h1>
     </div>
+    <p class="entry-tag">跨平台 ZeroTier 多 Planet 客户端，两种风格任选</p>
   </header>
 
   <main class="entry-split">
-    <a class="pane pane--modern" href="/modern.html">
-      <span class="pane__index">A</span>
-      <h2>现代</h2>
-      <p>MODERN</p>
-      <span class="pane__desc">浅色 · 留白 · 克制精致</span>
-      <span class="pane__cta">进入 →</span>
-    </a>
-    <a class="pane pane--future" href="/future.html">
-      <span class="pane__index">B</span>
-      <h2>未来</h2>
-      <p>FUTURE</p>
-      <span class="pane__desc">深空 · 轨道 · 沉浸炫技</span>
-      <span class="pane__cta">进入 →</span>
-    </a>
+    <article class="pane pane--modern">
+      <h2><a href="/modern.html">现代</a></h2>
+      <p class="pane__desc">石墨与信号橙，产品在页面上工作</p>
+      <div class="pane__preview">
+        <span class="pv-rows" data-ui>
+          <span class="pv-row">切换 Planet<span class="pv-key">⌘2</span></span>
+          <span class="pv-row pv-row--on">eval $(planet-port use company)</span>
+        </span>
+        <img class="pv-shot" src="/assets/screenshots/android-home.webp" alt="Planet Port Android 版界面" width="120" height="240" />
+        <img class="pv-shot pv-shot--short" src="/assets/screenshots/android-settings.webp" alt="Planet Port Android 设置界面" width="110" height="200" />
+      </div>
+      <a class="pane__cta" href="/modern.html">进入现代版</a>
+    </article>
+    <article class="pane pane--future">
+      <h2><a href="/future.html">未来</a></h2>
+      <p class="pane__desc">深空与信号蓝，一颗行星贯穿全页</p>
+      <div class="pane__preview">
+        <img class="pv-shot pv-shot--round" src="/assets/screenshots/ios-home.webp" alt="Planet Port iOS 版界面" width="200" height="200" />
+        <img class="pv-shot" src="/assets/screenshots/ios-network.webp" alt="Planet Port iOS 网络列表" width="96" height="192" />
+      </div>
+      <a class="pane__cta" href="/future.html">进入未来版</a>
+    </article>
   </main>
 
-  <footer class="entry-footer">非官方客户端，与 ZeroTier, Inc. 无隶属关系</footer>
+  <footer class="entry-footer">
+    <a href="https://github.com/planet-port">GitHub 仓库</a>
+    <span>Planet Port 是社区驱动的非官方 ZeroTier 客户端，与 ZeroTier, Inc. 无隶属关系。</span>
+  </footer>
   <script type="module" src="/scripts/entry.js"></script>
 </body>
 </html>
