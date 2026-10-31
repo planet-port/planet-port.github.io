@@ -1,0 +1,191 @@
+/* ===== 设计令牌 ===== */
+:root {
+  --f-bg: #050508;
+  --f-bg-2: #0a0c14;
+  --f-surface: rgba(16, 20, 34, .55);
+  --f-text: #e8f0ff;
+  --f-text-2: #8b96ad;
+  --f-cyan: #35e0ff;          /* 霓虹青 */
+  --f-magenta: #ff5cc8;       /* 品红点缀 */
+  --f-line: rgba(80, 200, 255, .22);
+  --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --f-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --f-maxw: 1080px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+.f-body {
+  font-family: var(--f-sans); background: var(--f-bg); color: var(--f-text);
+  line-height: 1.7; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* 星空画布：固定底层 */
+#starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.f-nav, .f-hero, .f-main, .f-footer { position: relative; z-index: 1; }
+
+/* ===== 导航（玻璃） ===== */
+.f-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(5,5,8,.6); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--f-line);
+}
+.f-nav__brand { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-weight: 700; letter-spacing: .18em; text-decoration: none; }
+.f-nav__links { display: flex; gap: 26px; font-size: 13.5px; font-family: var(--f-mono); }
+.f-nav__links a { text-decoration: none; color: var(--f-text-2); }
+.f-nav__links a:hover { color: var(--f-cyan); text-shadow: 0 0 12px rgba(53,224,255,.6); }
+.f-nav__github { border: 1px solid var(--f-line); border-radius: 999px; padding: 5px 14px; }
+.f-nav__toggle { display: none; }
+
+/* ===== 首屏 ===== */
+.f-hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 96px 32px; max-width: var(--f-maxw); margin: 0 auto; }
+.f-hero__eyebrow { font-family: var(--f-mono); font-size: 13px; color: var(--f-cyan); letter-spacing: .14em; }
+.f-hero h1 {
+  font-size: clamp(42px, 6.5vw, 84px); line-height: 1.12; letter-spacing: .02em; margin: 18px 0;
+  text-shadow: 0 0 40px rgba(53,224,255,.25);
+}
+.f-hero__sub { color: var(--f-text-2); max-width: 46ch; font-size: 17px; }
+.f-hero__cta { display: flex; gap: 14px; margin-top: 34px; }
+.f-btn { font-family: var(--f-mono); display: inline-block; padding: 11px 24px; font-size: 14px; text-decoration: none; border-radius: 4px; }
+.f-btn--primary { background: var(--f-cyan); color: #04121a; box-shadow: 0 0 24px rgba(53,224,255,.45); }
+.f-btn--primary:hover { box-shadow: 0 0 40px rgba(53,224,255,.7); }
+.f-btn--ghost { border: 1px solid var(--f-line); color: var(--f-text); }
+
+/* 轨道动画：同心轨道环 + 行星
+   环 1（inset:0）半径 280px，环 2（inset:90px）半径 190px，圆心均为 (280px, 280px)。
+   行星定位在对应环的顶点，transform-origin 指向圆心，靠 rotate 实现公转。 */
+.f-orbit { position: absolute; right: -120px; top: 50%; width: 560px; height: 560px; transform: translateY(-50%); pointer-events: none; }
+.f-orbit__ring { position: absolute; inset: 0; border: 1px solid rgba(80,200,255,.18); border-radius: 50%; }
+.f-orbit__ring--2 { inset: 90px; border-color: rgba(255,92,200,.16); }
+.f-orbit__ring--3 { inset: 180px; }
+.f-orbit__planet { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--f-cyan); box-shadow: 0 0 18px var(--f-cyan); }
+.f-orbit__planet--a { top: -7px; left: calc(50% - 7px); transform-origin: 7px 287px; animation: f-orbit-a 18s linear infinite; }
+.f-orbit__planet--b { top: 85px; left: calc(50% - 5px); width: 10px; height: 10px; background: var(--f-magenta); box-shadow: 0 0 14px var(--f-magenta); transform-origin: 5px 195px; animation: f-orbit-b 26s linear infinite; }
+@keyframes f-orbit-a { to { transform: rotate(360deg); } }
+@keyframes f-orbit-b { to { transform: rotate(-360deg); } }
+
+/* ===== 章节通用 ===== */
+.f-section { max-width: var(--f-maxw); margin: 0 auto; padding: 96px 32px; }
+.f-section__tag { font-family: var(--f-mono); font-size: 13px; color: var(--f-cyan); letter-spacing: .2em; margin-bottom: 12px; }
+.f-section h2 { font-size: clamp(26px, 3.6vw, 40px); margin-bottom: 22px; }
+.f-lead { color: var(--f-text-2); max-width: 62ch; font-size: 16.5px; }
+
+/* ===== HUD 能力卡片（玻璃 + 霓虹描边 + 扫描线） ===== */
+.f-hud-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.f-hud {
+  position: relative; overflow: hidden;
+  background: var(--f-surface); backdrop-filter: blur(10px);
+  border: 1px solid var(--f-line); border-radius: 8px; padding: 26px 22px;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.f-hud::after {  /* 扫描线 */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(53,224,255,.03) 3px 4px);
+}
+.f-hud:hover { border-color: var(--f-cyan); box-shadow: 0 0 30px rgba(53,224,255,.18); transform: translateY(-3px); }
+.f-hud__no { font-family: var(--f-mono); font-size: 12px; color: var(--f-magenta); letter-spacing: .16em; }
+.f-hud h3 { font-size: 17px; margin: 10px 0 8px; }
+.f-hud p { font-size: 14px; color: var(--f-text-2); }
+
+/* ===== 座舱两栏 ===== */
+.f-cockpits { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.f-cockpit { background: var(--f-surface); backdrop-filter: blur(10px); border: 1px solid var(--f-line); border-radius: 8px; padding: 30px 26px; }
+.f-cockpit__tag { font-family: var(--f-mono); font-size: 12px; color: var(--f-cyan); letter-spacing: .18em; }
+.f-cockpit h3 { font-size: 19px; margin: 10px 0; }
+.f-cockpit p { color: var(--f-text-2); margin-bottom: 20px; }
+/* 全息截图条 */
+.f-holo-strip { display: flex; gap: 14px; overflow-x: auto; padding: 8px 4px 12px; scroll-snap-type: x mandatory; }
+.f-holo-strip figure { flex: 0 0 auto; scroll-snap-align: start; }
+.f-holo-strip img {
+  height: 380px; width: auto; border-radius: 10px;
+  border: 1px solid var(--f-line);
+  box-shadow: 0 0 24px rgba(53,224,255,.15), inset 0 0 30px rgba(53,224,255,.05);
+}
+.f-cli {
+  background: rgba(3,5,10,.8); color: #b9ecff; border: 1px solid var(--f-line); border-radius: 8px;
+  padding: 20px 22px; font-family: var(--f-mono); font-size: 13.5px; line-height: 1.9; overflow-x: auto;
+}
+
+/* ===== 跃迁序列 ===== */
+.f-seq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; list-style: none; }
+.f-seq li { border: 1px dashed var(--f-line); border-radius: 8px; padding: 26px 22px; background: var(--f-surface); }
+.f-seq span { font-family: var(--f-mono); font-size: 12.5px; color: var(--f-magenta); letter-spacing: .16em; }
+.f-seq h3 { margin: 8px 0 6px; font-size: 17px; }
+.f-seq p { font-size: 14px; color: var(--f-text-2); }
+
+/* ===== 星图矩阵 ===== */
+.f-starmap {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  background-image: linear-gradient(rgba(80,200,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(80,200,255,.05) 1px, transparent 1px);
+  background-size: 40px 40px; padding: 28px; border: 1px solid var(--f-line); border-radius: 8px;
+}
+.f-starmap__cell { padding: 18px 16px; border: 1px solid rgba(80,200,255,.12); border-radius: 6px; background: rgba(5,5,8,.5); }
+.f-starmap__cell strong { display: block; font-size: 16px; }
+.f-starmap__cell span { display: block; font-family: var(--f-mono); font-size: 12px; color: var(--f-text-2); margin: 2px 0 8px; }
+.f-starmap__cell em { font-style: normal; font-size: 13px; }
+.f-starmap .ok { color: var(--f-cyan); }
+.f-starmap .wip { color: #ffc46b; }
+.f-starmap .plan { color: var(--f-text-2); }
+
+/* ===== 航线图 ===== */
+.f-voyage { list-style: none; position: relative; padding-left: 34px; }
+.f-voyage::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--f-cyan), var(--f-magenta)); box-shadow: 0 0 12px rgba(53,224,255,.4); }
+.f-voyage li { position: relative; padding-bottom: 30px; }
+.f-voyage li:last-child { padding-bottom: 0; }
+.f-voyage li::before { content: ""; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--f-bg); border: 2px solid var(--f-cyan); }
+.f-voyage li.plan::before { border-color: var(--f-text-2); }
+.f-voyage span { font-family: var(--f-mono); font-size: 12.5px; color: #ffc46b; }
+.f-voyage li.plan span { color: var(--f-text-2); }
+.f-voyage h3 { font-size: 16.5px; margin: 4px 0; }
+.f-voyage p { font-size: 14px; color: var(--f-text-2); max-width: 60ch; }
+.f-note { margin-top: 20px; font-size: 13px; color: var(--f-text-2); }
+
+/* ===== 页脚 ===== */
+.f-footer { border-top: 1px solid var(--f-line); text-align: center; padding: 48px 32px; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.f-footer__links { display: flex; gap: 22px; font-family: var(--f-mono); font-size: 13px; }
+.f-footer__links a { color: var(--f-text-2); text-decoration: none; }
+.f-footer__links a:hover { color: var(--f-cyan); }
+.f-footer p { font-size: 12.5px; color: var(--f-text-2); }
+
+/* ===== 风格切换 ===== */
+.f-switch {
+  position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  font-family: var(--f-mono); font-size: 13px; text-decoration: none;
+  background: rgba(5,5,8,.8); color: var(--f-cyan); padding: 9px 14px;
+  border-radius: 999px; border: 1px solid var(--f-line);
+  box-shadow: 0 0 18px rgba(53,224,255,.2);
+}
+.f-switch:hover { box-shadow: 0 0 30px rgba(53,224,255,.45); }
+
+/* ===== 滚动显现 ===== */
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 900px) {
+  .f-hud-grid, .f-starmap { grid-template-columns: 1fr 1fr; }
+  .f-cockpits { grid-template-columns: 1fr; }
+  .f-orbit { opacity: .35; right: -220px; }
+  .f-seq { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .f-nav__links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: rgba(5,5,8,.95);
+    border-bottom: 1px solid var(--f-line); padding: 8px 24px 16px;
+  }
+  .f-nav__links.open { display: flex; }
+  .f-nav__links a { padding: 10px 0; }
+  .f-nav__toggle { display: block; background: none; border: none; color: var(--f-text); font-size: 22px; cursor: pointer; }
+  .f-section { padding: 64px 24px; }
+  .f-hud-grid, .f-starmap { grid-template-columns: 1fr; }
+  .f-holo-strip img { height: 300px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
