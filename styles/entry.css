@@ -1,0 +1,82 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: #101014;
+  color: #e8e8ec;
+}
+
+.entry-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 32px;
+}
+.entry-header span { display: block; font-size: 12px; color: #9a9aa5; }
+
+.entry-split {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: flex-grow .3s ease;
+}
+
+.pane--modern { background: #FAFAFA; color: #17171c; }
+.pane--modern .pane__desc { color: #6b6b76; }
+.pane--modern .pane__cta { color: #0a6cf1; }
+
+.pane--future {
+  background: radial-gradient(ellipse at 50% 120%, #0d1428 0%, #050508 60%);
+  color: #e8f4ff;
+}
+.pane--future .pane__desc { color: #6f7d95; }
+.pane--future .pane__cta { color: #35e0ff; }
+
+.pane h2 { font-size: clamp(40px, 6vw, 72px); font-weight: 700; letter-spacing: .08em; }
+.pane p { font-size: 14px; letter-spacing: .5em; opacity: .55; text-transform: uppercase; }
+.pane__index {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  font-size: 13px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  opacity: .4;
+}
+.pane__cta { margin-top: 18px; font-size: 14px; }
+
+/* hover：分屏扩张 + cta 位移 */
+.pane:hover { flex-grow: 1.15; }
+.pane:hover .pane__cta { transform: translateX(6px); }
+.pane__cta { transition: transform .25s ease; display: inline-block; }
+
+.entry-footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #6b6b76;
+  background: #101014;
+}
+
+/* 移动端：上下分屏 */
+@media (max-width: 720px) {
+  .entry-split { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .pane h2 { font-size: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pane, .pane__cta { transition: none; }
+}
