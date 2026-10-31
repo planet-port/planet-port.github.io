@@ -64,7 +64,10 @@ toggle?.addEventListener('click', () => {
   toggle.setAttribute('aria-expanded', String(open))
 })
 links?.querySelectorAll('a').forEach((a) =>
-  a.addEventListener('click', () => links.classList.remove('open'))
+  a.addEventListener('click', () => {
+    links.classList.remove('open')
+    toggle?.setAttribute('aria-expanded', 'false')
+  })
 )
 
 // 3. 滚动显现

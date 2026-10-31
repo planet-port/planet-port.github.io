@@ -30,7 +30,7 @@ a { color: inherit; }
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 32px;
-  background: rgba(5,5,8,.6); backdrop-filter: blur(14px);
+  background: rgba(5,5,8,.6); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--f-line);
 }
 .f-nav__brand { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-weight: 700; letter-spacing: .18em; text-decoration: none; }
@@ -77,7 +77,7 @@ a { color: inherit; }
 .f-hud-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .f-hud {
   position: relative; overflow: hidden;
-  background: var(--f-surface); backdrop-filter: blur(10px);
+  background: var(--f-surface); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   border: 1px solid var(--f-line); border-radius: 8px; padding: 26px 22px;
   transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
@@ -92,7 +92,7 @@ a { color: inherit; }
 
 /* ===== 座舱两栏 ===== */
 .f-cockpits { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.f-cockpit { background: var(--f-surface); backdrop-filter: blur(10px); border: 1px solid var(--f-line); border-radius: 8px; padding: 30px 26px; }
+.f-cockpit { background: var(--f-surface); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--f-line); border-radius: 8px; padding: 30px 26px; }
 .f-cockpit__tag { font-family: var(--f-mono); font-size: 12px; color: var(--f-cyan); letter-spacing: .18em; }
 .f-cockpit h3 { font-size: 19px; margin: 10px 0; }
 .f-cockpit p { color: var(--f-text-2); margin-bottom: 20px; }
@@ -161,8 +161,8 @@ a { color: inherit; }
 .f-switch:hover { box-shadow: 0 0 30px rgba(53,224,255,.45); }
 
 /* ===== 滚动显现 ===== */
-[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-[data-reveal].is-in { opacity: 1; transform: none; }
+.js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
 
 /* ===== 响应式 ===== */
 @media (max-width: 900px) {
