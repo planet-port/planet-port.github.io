@@ -20,11 +20,12 @@ body {
 
 .entry-split {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
 }
 
 .pane {
+  flex: 1;
+  min-width: 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -73,7 +74,7 @@ body {
 
 /* 移动端：上下分屏 */
 @media (max-width: 720px) {
-  .entry-split { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .entry-split { flex-direction: column; }
   .pane h2 { font-size: 40px; }
 }
 
