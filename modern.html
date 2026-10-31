@@ -1,1 +1,186 @@
-<!doctype html><html><head><meta charset="UTF-8"><title>placeholder</title></head><body></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planet Port — 行星管理，装进口袋</title>
+  <meta name="description" content="Planet Port：开源跨平台 ZeroTier 多行星客户端。多 Planet 并存、多网络同连、路由与 DNS 掌控。" />
+  <link rel="icon" href="/assets/planet-port-logo.webp" />
+  <link rel="stylesheet" href="/styles/modern.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav__brand" href="#top">
+      <img src="/assets/planet-port-logo.webp" alt="Planet Port" width="28" height="28" />
+      <span>Planet Port</span>
+    </a>
+    <div class="nav__links" id="navLinks">
+      <a href="#concept">概念</a>
+      <a href="#features">能力</a>
+      <a href="#platforms">双端</a>
+      <a href="#flow">流程</a>
+      <a href="#matrix">平台</a>
+      <a href="#roadmap">路线图</a>
+      <a class="nav__github" href="https://github.com/planet-port" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+  </nav>
+
+  <!-- 01 首屏（深色对比区） -->
+  <header class="hero" id="top">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">开源 · 跨平台 ZeroTier 客户端</p>
+      <h1>行星管理，<br />装进口袋。</h1>
+      <p class="hero__sub">
+        Planet Port 让多 Planet 组网变成一次点击——官方与私有 Planet 同机并存，
+        网络、路由与 DNS 全程掌控。
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#matrix">下载 App</a>
+        <a class="btn btn--ghost" href="https://github.com/planet-port" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <img class="hero__shot hero__shot--a" src="/assets/screenshots/ios-home.webp" alt="" />
+      <img class="hero__shot hero__shot--b" src="/assets/screenshots/android-home.webp" alt="" />
+    </div>
+  </header>
+
+  <main>
+    <!-- 02 概念 -->
+    <section class="section" id="concept" data-reveal>
+      <div class="section__head">
+        <span class="section__no">01</span>
+        <h2>为什么需要 Planet Port</h2>
+      </div>
+      <p class="lead">
+        ZeroTier 的世界由 Planet 根服务器指引方向。官方只有一颗；自建私有 Planet 之后，
+        每次切换都要手改文件、重启服务。Planet Port 把这件事变成一个 App：
+        导入、命名、启停、切换，全部一处完成。
+      </p>
+    </section>
+
+    <!-- 03 核心能力 -->
+    <section class="section" id="features" data-reveal>
+      <div class="section__head">
+        <span class="section__no">02</span>
+        <h2>核心能力</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>多 Planet 并存</h3>
+          <p>官方与多份私有 Planet 同机共存，别名管理、一键启停，互不干扰。</p>
+        </article>
+        <article class="card">
+          <h3>多网络同连</h3>
+          <p>每 Planet 独立身份，join / leave 自如，网络与 peers 跨 Planet 聚合查询。</p>
+        </article>
+        <article class="card">
+          <h3>路由与 DNS 掌控</h3>
+          <p>默认路由开关、dnsMode 三种模式，陈述式配置，脚本友好。</p>
+        </article>
+        <article class="card">
+          <h3>Moon 支持</h3>
+          <p>orbit / deorbit、导入 .moon 文件，中继节点一样纳入管理。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 04 双端介绍（并重两栏） -->
+    <section class="section" id="platforms" data-reveal>
+      <div class="section__head">
+        <span class="section__no">03</span>
+        <h2>同一件事，两种方式</h2>
+      </div>
+      <p class="lead">移动端与桌面端做的是同一件事——行星管理，只是交互方式不同。</p>
+      <div class="duo">
+        <div class="duo__col">
+          <h3>移动端 · 触控即达</h3>
+          <p>iOS / Android / 鸿蒙原生 App。行星管理、网络开关、peers 状态，指尖完成。</p>
+          <div class="screenshot-strip" role="list">
+            <figure role="listitem"><img src="/assets/screenshots/ios-home.webp" alt="iOS 首页" loading="lazy" /></figure>
+            <figure role="listitem"><img src="/assets/screenshots/ios-import.webp" alt="iOS 导入 Planet" loading="lazy" /></figure>
+            <figure role="listitem"><img src="/assets/screenshots/ios-network.webp" alt="iOS 网络" loading="lazy" /></figure>
+            <figure role="listitem"><img src="/assets/screenshots/android-home.webp" alt="Android 首页" loading="lazy" /></figure>
+            <figure role="listitem"><img src="/assets/screenshots/android-import.webp" alt="Android 导入 Planet" loading="lazy" /></figure>
+            <figure role="listitem"><img src="/assets/screenshots/android-network.webp" alt="Android 网络" loading="lazy" /></figure>
+            <figure role="listitem"><img src="/assets/screenshots/android-settings.webp" alt="Android 设置" loading="lazy" /></figure>
+          </div>
+        </div>
+        <div class="duo__col">
+          <h3>桌面端 · 命令行常驻</h3>
+          <p>
+            macOS CLI 已发布：特权 daemon 持有核心与虚拟网卡，CLI 只是薄客户端——
+            <strong>GUI 不开、隧道照跑</strong>。GUI 与 Linux / Windows 在路上。
+          </p>
+          <pre class="cli"><code>$ planet-port add ./my.planet --name company
+$ eval $(planet-port use company)
+$ planet-port join 8056c2e21c000001</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 使用流程 -->
+    <section class="section section--alt" id="flow" data-reveal>
+      <div class="section__head">
+        <span class="section__no">04</span>
+        <h2>三步，接入你的网络</h2>
+      </div>
+      <ol class="steps">
+        <li><span>Step 1</span><h3>导入 Planet</h3><p>本地文件或 URL 导入，起一个好记的别名。</p></li>
+        <li><span>Step 2</span><h3>加入网络</h3><p>输入 Network ID，join 并随时 leave。</p></li>
+        <li><span>Step 3</span><h3>一键切换</h3><p>在任意 Planet 之间即时切换，无需重启服务。</p></li>
+      </ol>
+    </section>
+
+    <!-- 06 平台矩阵 -->
+    <section class="section" id="matrix" data-reveal>
+      <div class="section__head">
+        <span class="section__no">05</span>
+        <h2>支持平台</h2>
+      </div>
+      <table class="matrix">
+        <thead><tr><th>平台</th><th>形态</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td>iOS</td><td>App</td><td class="ok">✅ 可用</td></tr>
+          <tr><td>Android</td><td>App</td><td class="ok">✅ 可用</td></tr>
+          <tr><td>鸿蒙</td><td>App</td><td class="ok">✅ 可用</td></tr>
+          <tr><td>macOS</td><td>CLI</td><td class="ok">✅ 可用</td></tr>
+          <tr><td>macOS</td><td>GUI</td><td class="plan">📐 规划中</td></tr>
+          <tr><td>Linux</td><td>CLI</td><td class="wip">🚧 适配中</td></tr>
+          <tr><td>Windows</td><td>CLI / GUI</td><td class="plan">📐 规划中</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 07 路线图 -->
+    <section class="section section--alt" id="roadmap" data-reveal>
+      <div class="section__head">
+        <span class="section__no">06</span>
+        <h2>路线图</h2>
+      </div>
+      <ol class="timeline">
+        <li class="timeline__item wip"><span>🚧 进行中</span><h3>Linux 适配</h3><p>数据面已通（多 planet 上线、join / 路由、跨节点连通已实机验证），服务层 systemd 与安装脚本适配中。</p></li>
+        <li class="timeline__item plan"><span>📐 规划中</span><h3>macOS GUI</h3><p>Tauri 2 托盘常驻，作为既有 daemon 的薄客户端。</p></li>
+        <li class="timeline__item plan"><span>📐 规划中</span><h3>Windows</h3><p>CLI 与 GUI，延续 daemon + 薄客户端架构。</p></li>
+        <li class="timeline__item plan"><span>📐 规划中</span><h3>安装包分发</h3><p>deb / MSI 等系统安装包，逐步补齐。</p></li>
+      </ol>
+      <p class="note">以各仓库 README 为准，不承诺时间点。</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="/assets/planet-port-logo.webp" alt="Planet Port" width="32" height="32" />
+    <div class="footer__links">
+      <a href="https://github.com/planet-port" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/planet-port" target="_blank" rel="noopener">planet-port-ios</a>
+      <a href="https://github.com/planet-port" target="_blank" rel="noopener">planet-port-android</a>
+      <a href="https://github.com/planet-port" target="_blank" rel="noopener">planet-port-desktop</a>
+    </div>
+    <p>非官方客户端，与 ZeroTier, Inc. 无隶属关系。</p>
+  </footer>
+
+  <a class="style-switch" href="/future.html" title="切换到未来风格">⌁ 未来风</a>
+  <script type="module" src="/scripts/modern.js"></script>
+</body>
+</html>
