@@ -20,41 +20,71 @@
       <a href="#features">能力</a>
       <a href="#how">如何工作</a>
       <a href="#proof">平台</a>
-      <a href="#roadmap">路线图</a>
+      <a href="#faq">常见问题</a>
       <a href="/future.html">未来版</a>
       <a class="nav__gh" href="https://github.com/planet-port" target="_blank" rel="noopener">GitHub</a>
     </div>
     <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu">菜单</button>
   </nav>
 
-  <!-- Hero：句子分两半，中间媒体帧垂直 reel -->
+  <!-- Hero：左侧句子与按钮，右侧真实 App 截图双卡叠放 -->
   <header class="hero">
-    <div class="hero__stage">
-      <h1 class="hero__h">
-        <span class="hero__h-a">把所有 Planet，</span>
-        <span class="hero__h-b">装进一个客户端。</span>
-      </h1>
-      <div class="hero__reel" data-reel>
-        <div class="reel__track" data-reel-track>
-          <figure class="reel__frame">
-            <img src="/assets/screenshots/ios-import.webp" alt="iOS App：添加行星服务器（planet 文件 / URL / 二维码）" />
-          </figure>
-          <figure class="reel__frame">
-            <img src="/assets/screenshots/android-network.webp" alt="Android App：网络在线状态与 peers 连接" loading="lazy" />
-          </figure>
-          <figure class="reel__frame">
-            <img src="/assets/screenshots/ios-home.webp" alt="iOS App：当前 Planet 与网络清单" loading="lazy" />
-          </figure>
-          <figure class="reel__frame">
-            <img src="/assets/screenshots/android-home.webp" alt="Android App：Planet 与网络列表" loading="lazy" />
-          </figure>
-        </div>
-      </div>
-      <div class="hero__support">
-        <p>Planet Port 是跨平台 ZeroTier 客户端：多份 Planet 并存、随时切换，多个网络同连，路由与 DNS 尽在掌控。</p>
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <h1 class="hero__h">把所有 Planet，<br />装进一个客户端</h1>
+        <p class="hero__support">Planet Port 是跨平台 ZeroTier 客户端：多份 Planet 并存、随时切换，多个网络同连，路由与 DNS 尽在掌控。</p>
         <div class="hero__cta">
           <a class="btn btn--accent" href="https://github.com/planet-port" target="_blank" rel="noopener">获取 Planet Port</a>
           <a class="btn btn--ghost" href="#features">直接看命令</a>
+        </div>
+      </div>
+      <div class="hero__media" data-reveal>
+        <!-- HTML 重建的界面示意（截图素材有拼写/贴纸瑕疵，改用重建卡；两卡同构，后卡下移 48px 形成错位） -->
+        <div class="shot" data-ui role="img" aria-label="Planet Port 界面示意：Planet 5cf54f18，网络 G-Server 已连接">
+          <div class="shot__status"><span>半夜12:38</span><span class="shot__sig"><i></i><i></i><i></i><b></b></span></div>
+          <div class="shot__head"><img src="/assets/planet-port-logo.webp" alt="" width="20" height="20" />Planet Port</div>
+          <div class="shot__planet">
+            <span class="shot__used">上次使用</span>
+            <img src="/assets/planet-port-logo.webp" alt="" width="52" height="52" />
+            <code class="shot__nwid">5cf54f18</code>
+          </div>
+          <p class="shot__label">网络 · 1</p>
+          <div class="shot__netcard">
+            <div class="shot__netmain">
+              <span class="shot__netname">G-Server</span>
+              <code class="shot__netid">5cf54f1815ac627d</code>
+              <span class="shot__netstate shot__netstate--on">已连接</span>
+            </div>
+            <span class="shot__toggle is-on" aria-hidden="true"></span>
+          </div>
+          <span class="shot__fab" aria-hidden="true">+</span>
+        </div>
+        <div class="shot shot--back" data-ui role="img" aria-label="Planet Port 界面示意：Planet 565799d8，网络 G-Home 已连接、G-Server 未连接">
+          <div class="shot__status"><span>半夜12:38</span><span class="shot__sig"><i></i><i></i><i></i><b></b></span></div>
+          <div class="shot__head"><img src="/assets/planet-port-logo.webp" alt="" width="20" height="20" />Planet Port</div>
+          <div class="shot__planet">
+            <span class="shot__used">上次使用</span>
+            <img src="/assets/planet-port-logo.webp" alt="" width="52" height="52" />
+            <code class="shot__nwid">565799d8</code>
+          </div>
+          <p class="shot__label">网络 · 2</p>
+          <div class="shot__netcard">
+            <div class="shot__netmain">
+              <span class="shot__netname">G-Home</span>
+              <code class="shot__netid">565799d8f6e1c3a2</code>
+              <span class="shot__netstate shot__netstate--on">已连接</span>
+            </div>
+            <span class="shot__toggle is-on" aria-hidden="true"></span>
+          </div>
+          <div class="shot__netcard">
+            <div class="shot__netmain">
+              <span class="shot__netname">G-Server</span>
+              <code class="shot__netid">5cf54f1815ac627d</code>
+              <span class="shot__netstate">未连接</span>
+            </div>
+            <span class="shot__toggle" aria-hidden="true"></span>
+          </div>
+          <span class="shot__fab" aria-hidden="true">+</span>
         </div>
       </div>
     </div>
@@ -66,10 +96,10 @@
     <section class="intro">
       <p class="intro__lead" data-reveal>只留一个入口，就意味着每次换环境都重新配置。Planet Port 把所有入口留在手边，切换只是一条命令。</p>
       <div class="intro__cols" data-reveal>
-        <p><strong>多 Planet 并存。</strong>官方与私有 Planet 同时登记，互不覆盖，各自记住自己的网络与配置。</p>
-        <p><strong>一键切换。</strong><code>eval $(planet-port use company)</code> 即刻生效，终端、路由、DNS 同步跟随，无需重装。</p>
-        <p><strong>多网络同连。</strong>不同 Planet 下的多个网络同时保持连接，内网与联调环境并行在线。</p>
-        <p><strong>掌控路由与 DNS。</strong>routeViaZeroTier 与 dnsMode 逐网络设定，流量走哪条路、域名谁来解析，由你决定。</p>
+        <p><strong>多 Planet 并存。</strong>官方与私有 Planet 同时登记，互不覆盖，各自记住自己的网络与配置。网络清单跟着各自的 Planet 走，删除一份不影响其余。</p>
+        <p><strong>一键切换。</strong><code>eval $(planet-port use company)</code> 即刻生效，终端、路由、DNS 同步跟随，无需重装。官方 Planet 始终在列，一条命令就能切回。</p>
+        <p><strong>多网络同连。</strong>不同 Planet 下的多个网络同时保持连接，内网与联调环境并行在线。切换 Planet 也不会打断已经在线的网络。</p>
+        <p><strong>掌控路由与 DNS。</strong>routeViaZeroTier 与 dnsMode 逐网络设定，流量走哪条路、域名谁来解析，由你决定。dnsMode=none 时，解析完全交回系统处理。</p>
       </div>
     </section>
 
@@ -82,6 +112,7 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="添加 planet 私有 根服务器 官方">
               <span class="cmdlist__name">添加 Planet</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>1</kbd></span>
+              <span class="cmdlist__detail">文件或 URL 均可，--name 起别名。</span>
               <span class="cmdlist__desc"><code>planet add &lt;file|URL&gt; --name &lt;别名&gt;</code> 把私有根服务器收进列表，官方 Planet 原样保留。</span>
             </button>
           </li>
@@ -89,6 +120,7 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="true" data-keywords="切换 planet use 全局 生效 shell">
               <span class="cmdlist__name">切换 Planet</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>2</kbd></span>
+              <span class="cmdlist__detail">导出到 shell 环境，路由与 DNS 跟着换。</span>
               <span class="cmdlist__desc"><code>eval $(planet-port use &lt;别名&gt;)</code> 一条命令，全局生效。</span>
             </button>
           </li>
@@ -96,13 +128,15 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="多网络 同连 并行 在线">
               <span class="cmdlist__name">多网络同连</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>3</kbd></span>
+              <span class="cmdlist__detail">join 多个网络，并行在线互不打断。</span>
               <span class="cmdlist__desc">不同 Planet 下的网络并行在线，互不打断。</span>
             </button>
           </li>
           <li role="presentation">
-            <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="路由 routeViaZeroTier 流量">
+            <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="路由 routeViaZeroTier 流量 直连">
               <span class="cmdlist__name">路由掌控</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>4</kbd></span>
+              <span class="cmdlist__detail">开关之差：开走 ZeroTier，关则能直连就直连。</span>
               <span class="cmdlist__desc">routeViaZeroTier 逐网络设定流量走向。</span>
             </button>
           </li>
@@ -110,6 +144,7 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="dns dnsMode 解析 none network custom">
               <span class="cmdlist__name">DNS 模式</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>5</kbd></span>
+              <span class="cmdlist__detail">none 交回系统 · network 用网络下发 · custom 自指定服务器。</span>
               <span class="cmdlist__desc">dnsMode 三档：none / network / custom。</span>
             </button>
           </li>
@@ -117,6 +152,7 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="moon 中继 orbit deorbit 根服务器">
               <span class="cmdlist__name">Moon 支持</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>6</kbd></span>
+              <span class="cmdlist__detail">orbit 挂载 · deorbit 卸载 · .moon 是它的文件。</span>
               <span class="cmdlist__desc">orbit、deorbit 与 .moon 文件管理中继根服务器。</span>
             </button>
           </li>
@@ -124,6 +160,7 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="join leave 网络管理 清单">
               <span class="cmdlist__name">多网络管理</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>7</kbd></span>
+              <span class="cmdlist__detail">join 加入、leave 退出，清单随 Planet 跟随。</span>
               <span class="cmdlist__desc">join / leave，网络清单随 Planet 跟随。</span>
             </button>
           </li>
@@ -131,6 +168,7 @@
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="特权 daemon macos 守护 隧道">
               <span class="cmdlist__name">特权守护</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>8</kbd></span>
+              <span class="cmdlist__detail">daemon 常驻后台，GUI 不开、隧道照跑。</span>
               <span class="cmdlist__desc">macOS 上 daemon 常驻，GUI 不开、隧道照跑。</span>
             </button>
           </li>
@@ -145,15 +183,15 @@
           <h2 class="how__title" data-reveal>切换 Planet</h2>
           <div class="how__step" data-step="0">
             <h3>登记 Planet。</h3>
-            <p><code>planet-port planet add ./company.planet --name company</code> 收进列表，官方 Planet 原样保留。</p>
+            <p><code>planet-port planet add ./company.planet --name company</code> 收进列表，官方 Planet 原样保留。URL 也能直接登记，别名用 --name 指定。</p>
           </div>
           <div class="how__step" data-step="1">
             <h3>切换入口。</h3>
-            <p><code>eval $(planet-port use company)</code> 之后所有操作指向这份 Planet。</p>
+            <p><code>eval $(planet-port use company)</code> 之后所有操作指向这份 Planet。官方 Planet 始终在列，切回也是一条命令。</p>
           </div>
           <div class="how__step" data-step="2">
             <h3>加入网络。</h3>
-            <p><code>planet-port join 8056c2e21c000001</code> 连上目标网络，多个可同时在线。</p>
+            <p><code>planet-port join 8056c2e21c000001</code> 连上目标网络，多个可同时在线。网络与 peers 状态在 CLI 和 App 里一致。</p>
           </div>
         </div>
         <div class="how__right">
@@ -202,6 +240,20 @@
                 </ul>
               </div>
             </div>
+            <div class="how__shots">
+              <figure class="how__shot">
+                <img src="/assets/screenshots/ios-import.webp" alt="iOS App 添加行星服务器界面截图" width="1206" height="2622" loading="lazy" />
+                <figcaption>iOS · 添加行星服务器</figcaption>
+              </figure>
+              <figure class="how__shot">
+                <img src="/assets/screenshots/ios-network.webp" alt="iOS App 设置页截图：保持在线开关与同时连接上限" width="1206" height="2622" loading="lazy" />
+                <figcaption>iOS · 网络设置</figcaption>
+              </figure>
+              <figure class="how__shot">
+                <img src="/assets/screenshots/android-import.webp" alt="Android App 添加行星服务器界面截图" width="440" height="782" loading="lazy" />
+                <figcaption>Android · 添加行星服务器</figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -212,13 +264,15 @@
       <div class="show__dark">
         <textarea class="show__code" data-show-input aria-label="命令输入" spellcheck="false" rows="3">$ planet-port planet add ./company.planet --name company
 $ eval $(planet-port use company)</textarea>
+        <pre class="show__out">已添加 Planet company
+当前 Planet → company</pre>
         <p class="show__h show__h-dark">一条命令，</p>
       </div>
       <div class="show__light">
         <div class="ptable" data-ui>
           <table>
             <thead>
-              <tr><th>Planet</th><th>Source</th><th>Networks</th><th>状态</th></tr>
+              <tr><th>Planet</th><th>来源</th><th>网络数</th><th>状态</th></tr>
             </thead>
             <tbody>
               <tr data-planet="official">
@@ -243,18 +297,24 @@ $ eval $(planet-port use company)</textarea>
       <div class="tiles" data-reveal>
         <div class="tile tile--head">
           <h2>全平台行星管理</h2>
+          <p class="tile__headnote">同一套能力，多种形态。已发布的都在这里，没发布的不假装发布。</p>
         </div>
         <div class="tile tile--row">
           <h3>iOS App</h3>
           <p>已发布</p>
+          <p class="tile__note">planet 文件、URL、二维码均可添加。</p>
+          <span class="tile__shot"><img src="/assets/screenshots/ios-import.webp" alt="iOS App 添加行星服务器界面截图：选择文件、扫描二维码或输入 URL" width="1206" height="2622" loading="lazy" /></span>
         </div>
         <div class="tile tile--row">
           <h3>Android App</h3>
           <p>已发布</p>
+          <p class="tile__note">网络在线状态与 peers 连接一目了然。</p>
+          <span class="tile__shot"><img src="/assets/screenshots/android-settings.webp" alt="Android App 设置页截图：禁用 IPv6、同时连接上限、保持在线" width="440" height="782" loading="lazy" /></span>
         </div>
         <div class="tile tile--row">
           <h3>鸿蒙 App</h3>
           <p>已发布</p>
+          <p class="tile__note">多 Planet 并存，网络清单随切换跟随。</p>
         </div>
         <div class="tile tile--wide">
           <h3>macOS CLI</h3>
@@ -263,11 +323,12 @@ $ eval $(planet-port use company)</textarea>
         </div>
         <div class="tile">
           <h3>macOS GUI</h3>
-          <p>设计中</p>
+          <p>开发中</p>
+          <p class="tile__note">进度以仓库 releases 为准。</p>
         </div>
         <div class="tile tile--wide">
           <h3>Linux</h3>
-          <p>进行中</p>
+          <p>开发中</p>
         </div>
         <div class="tile tile--wide">
           <h3>Windows</h3>
@@ -280,11 +341,43 @@ $ eval $(planet-port use company)</textarea>
     <section class="roadmap" id="roadmap">
       <h2 class="roadmap__title" data-reveal>路线图</h2>
       <div class="roadmap__cols" data-reveal>
-        <p><strong>现在。</strong>三端 App（iOS / Android / 鸿蒙）与 macOS CLI 已发布。</p>
-        <p><strong>下一步。</strong>macOS GUI 与 Linux 客户端。</p>
-        <p><strong>规划。</strong>Windows 客户端。</p>
+        <p><strong>现在。</strong>三端 App（iOS / Android / 鸿蒙）与 macOS CLI 已发布。macOS CLI 以特权 daemon 运行，GUI 不开、隧道照跑。</p>
+        <p><strong>下一步。</strong>macOS GUI 与 Linux 客户端。两个平台同一套能力，发布节奏以仓库为准。</p>
+        <p><strong>规划。</strong>Windows 客户端。已列入计划，未设日期。</p>
       </div>
-      <p class="roadmap__note" data-reveal>以仓库 releases 为准，不设虚构日期。</p>
+      <p class="roadmap__note">以仓库 releases 为准，不设虚构日期。</p>
+    </section>
+
+    <!-- faq：六问，全部用事实作答 -->
+    <section class="faq" id="faq">
+      <h2 class="faq__title" data-reveal>常见问题</h2>
+      <div class="faq__list" data-reveal>
+        <details class="faq__item" open>
+          <summary>Planet 是什么？</summary>
+          <p>ZeroTier 的根服务器文件。官方客户端只认一份，Planet Port 把多份收进一个列表。</p>
+        </details>
+        <details class="faq__item">
+          <summary>和官方客户端有什么区别？</summary>
+          <p>多份 Planet 并存、随时切换，各自的网络清单跟着各自的 Planet 走。</p>
+        </details>
+        <details class="faq__item">
+          <summary>切换后，原有网络会断吗？</summary>
+          <p>不会。多个网络同连，不同 Planet 下的网络并行在线，切换不打断连接。</p>
+        </details>
+        <details class="faq__item">
+          <summary>DNS 可以完全不交给 ZeroTier 吗？</summary>
+          <p>可以。<code>dnsMode=none</code> 时解析完全交回系统处理；另有 <code>network</code>（用网络下发的解析）与 <code>custom</code>（自指定服务器）两档。</p>
+        </details>
+        <details class="faq__item">
+          <summary>Moon 是什么？</summary>
+          <p>ZeroTier 的中继根服务器。<code>orbit</code> 加入、<code>deorbit</code> 退出，<code>.moon</code> 是它的文件。</p>
+        </details>
+        <details class="faq__item">
+          <summary>和 ZeroTier, Inc. 是什么关系？</summary>
+          <p>没有关系。Planet Port 是社区驱动的非官方客户端，与 ZeroTier, Inc. 无隶属关系。</p>
+        </details>
+        <p class="faq__more">更多细节见 GitHub 仓库的 README 与 issues。</p>
+      </div>
     </section>
 
     <!-- cta：橙色场 + 真实添加对话框 -->
@@ -293,6 +386,8 @@ $ eval $(planet-port use company)</textarea>
         <h2 class="cta__close">第一步<br />已经打开</h2>
         <p class="cta__sentence">选一个 planet 文件，起个名字，就完成了。按钮会带你前往 GitHub 仓库，从 Releases 下载最新版本。</p>
         <a class="btn btn--ink" href="https://github.com/planet-port" target="_blank" rel="noopener">前往 GitHub 仓库</a>
+        <pre class="cta__next" data-ui><span class="cta__ps">$</span>planet-port planet add ./company.planet --name company
+已添加 Planet company</pre>
       </div>
       <div class="cta__right">
         <form class="dialog" data-ui data-reveal novalidate>

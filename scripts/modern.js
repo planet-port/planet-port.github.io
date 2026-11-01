@@ -43,37 +43,7 @@ if ('IntersectionObserver' in window && !reducedMotion) {
   revealEls.forEach((el) => el.classList.add('is-in'));
 }
 
-/* ---------- Hero：垂直 reel 随滚动推进（钉住舞台） ---------- */
-const reel = $('[data-reel]');
-const reelTrack = $('[data-reel-track]');
-if (reel && reelTrack && !reducedMotion && window.matchMedia('(min-width: 960px)').matches) {
-  const hero = reel.closest('.hero');
-  let step = 0;
-  const measure = () => {
-    const frames = $$('.reel__frame', reelTrack);
-    if (frames.length >= 2) step = frames[1].offsetTop - frames[0].offsetTop;
-  };
-  measure();
-  window.addEventListener('resize', measure);
-
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const rect = hero.getBoundingClientRect();
-    const total = rect.height - window.innerHeight;
-    if (total <= 0) return;
-    const p = Math.min(1, Math.max(0, -rect.top / total));
-    // 居中帧索引：起点为第 2 帧（上下各留邻帧切片），滚动推进到最后一帧
-    reelTrack.style.setProperty('--reel-y', `${(1 + 2 * p) * step}px`);
-  };
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }, { passive: true });
-  update();
-}
+/* ---------- Hero：静态双卡叠放，无需滚动逻辑 ---------- */
 
 /* ---------- features：巨型命令列表（选中 / 键盘 / 过滤） ---------- */
 const cmdSearch = $('#cmdSearch');

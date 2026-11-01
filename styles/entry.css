@@ -72,10 +72,11 @@ body {
   transition: flex-grow .3s ease;
 }
 
-/* 现代：石墨 + 信号橙（与 modern.html 同源） */
-.pane--modern { background: #18191b; color: #eff0f1; }
-.pane--modern .pane__desc { color: #b9bbc0; }
-.pane--modern .pane__cta { background: #ff4a1f; color: #18191b; }
+/* 现代：纸感浅底 + 信号橙（与 modern.html 同源） */
+.pane--modern { background: #faf9f7; color: #191917; }
+.pane--modern .pane__desc { color: #5c5b55; }
+.pane--modern .pane__cta { background: #ff4a1f; color: #191917; }
+.pane--modern .pv-row { color: #5c5b55; }
 
 /* 未来：深空 + 信号蓝（与 future.html 同源） */
 .pane--future { background: #0a0e1a; color: #eef1f8; }
