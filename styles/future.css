@@ -1,13 +1,13 @@
 /* ============================================================
-   Planet Port · 未来页 — one-motif（圆形天体）+ Cobalt on sand
-   调色映射（direction.palette "cobalt-on-sand" → 深空底）：
-   bg      #e6dbc7 → --field-1（沙，浅场）/ 页面底改深空 --bg #0a0e1a
-   surface #ddd0b9 → --field-2（沙深一档）
-   ink     #062b8a → --cobalt（沙色场上的墨与唯一数据色）
-   muted   #3a5aa8 → --cobalt-2（沙色场上的次注）
-   accent  #062b8a → 深空底上的信号蓝 --accent #3a6ff2（避开靛紫）
-   比例：深空底主导（hero/how/proof/road），沙与钴蓝作浅场片段
-   （features 开启色带、showcase 场、cta、footer），约 7:3。
+   Planet Port · 未来页 — one-motif（圆形天体）
+   调色：沿用现代版配色（纸感浅底 + 信号橙 + 墨黑深场）：
+   bg      #faf9f7（纸感浅底，页面主导）
+   surface #ffffff
+   accent  #ff4a1f（信号橙：按钮 / 行星圆 / 色带开关 / cta 场）
+   ink     #191917（墨黑：文字，兼深场填充 --cobalt 与唯一数据色）
+   muted   #5c5b55 · line #e7e5df · field #e9e8e3
+   深场（--cobalt 墨黑）用于 features 交替色带与选中态，
+   与浅场交替约 7:3，圆形母题与排版结构保持不变。
    ============================================================ */
 
 @font-face {
@@ -30,23 +30,23 @@
 }
 
 :root {
-  --bg: #0a0e1a;
-  --surface: #141a2e;
-  --line: #1d2540;
-  --ink: #eef1f8;
-  --muted: #a8b1c7;
-  --accent: #3a6ff2;
-  --accent-hi: #6b8ff5;  /* 文字落在其上时用（≥4.5:1） */
-  --accent-ink: #0a0e1a;
-  --field-1: #e6dbc7;      /* 沙 */
-  --field-2: #ddd0b9;      /* 沙深一档 */
-  --cobalt: #062b8a;       /* 沙场墨 / 唯一数据色 */
-  --cobalt-2: #3a5aa8;     /* 沙场次注 */
-  --cobalt-tint: #d9e0f5;  /* 钴蓝浅阶（showcase 场色） */
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --line: #e7e5df;
+  --ink: #191917;
+  --muted: #5c5b55;
+  --accent: #ff4a1f;
+  --accent-hi: #ff4a1f;   /* 沿用别名：原深空底亮蓝，现同 accent */
+  --accent-ink: #191917;
+  --field-1: #e9e8e3;      /* 浅场填充 */
+  --field-2: #ffffff;      /* 浅场亮一档 */
+  --cobalt: #191917;       /* 深场墨 / 唯一数据色 */
+  --cobalt-2: #5c5b55;     /* 浅场次注 */
+  --cobalt-tint: #e9e8e3;  /* 浅阶场色（showcase） */
   --ledger-bg: #ffffff;
-  --ledger-line: #e6e6e6;
-  --ledger-ink: #0a0a0a;
-  --ledger-muted: #6b6b6b;
+  --ledger-line: #e7e5df;
+  --ledger-ink: #191917;
+  --ledger-muted: #5c5b55;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace; /* taste-skill-ignore: literal code */
   --sans: "Bricolage Grotesque", "PingFang SC", "Microsoft YaHei", sans-serif;
   --m: clamp(20px, 4.4vw, 72px);  /* 单一等宽外边距 */
@@ -62,6 +62,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+button { font: inherit; color: inherit; }  /* currentColor 类开关依赖继承色，缺省黑色在深色带上不可见 */
 
 html { scroll-behavior: smooth; }
 
@@ -211,7 +212,7 @@ section { scroll-margin-top: 64px; }
   gap: 1vh;
   font-size: 2vh;
   font-weight: 500;
-  color: #262b3a;
+  color: #191917;
   white-space: nowrap;
 }
 .hero__state i {
@@ -234,12 +235,12 @@ section { scroll-margin-top: 64px; }
 .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; margin-top: 36px; }
 .hero__link {
   font-size: var(--fs-s);
-  color: #7c9cff;                     /* 深空底上 6.6:1，文字链接对比达标 */
+  color: var(--ink);
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 4px;
 }
-.hero__link:hover { text-decoration-color: #7c9cff; }
+.hero__link:hover { text-decoration-color: currentColor; }
 .nb { white-space: nowrap; }          /* 中文词不跨行拆 */
 .hero__facts {
   margin-top: clamp(48px, 9vh, 120px);
@@ -389,7 +390,7 @@ section { scroll-margin-top: 64px; }
 .hw__clause code {
   display: block;
   font-size: clamp(15px, 1.2vw, 17px);
-  background: var(--surface);
+  background: var(--field-1);        /* 浅底上白卡不显，用浅场填充垫出代码块 */
   padding: 0.6em 0.9em;
   border-radius: 6px;
   margin-top: 22px;
@@ -405,7 +406,7 @@ section { scroll-margin-top: 64px; }
   padding: 12vh 0;
 }
 
-/* Achromatic ledger 片段：白卡、无色外壳、#062b8a 唯一数据色 */
+/* Achromatic ledger 片段：白卡、无色外壳、墨黑唯一数据色 */
 .ledger {
   width: min(440px, 100%);
   background: var(--ledger-bg);
@@ -438,7 +439,7 @@ section { scroll-margin-top: 64px; }
   border-radius: 999px;
   padding: 2px 10px;
 }
-.ledger__row--cur { background: #f4f0e4; }
+.ledger__row--cur { background: #f4f3f0; }
 .ledger__row--cur .ledger__dot { background: var(--cobalt); }
 .ledger__row--cur .ledger__name { color: var(--cobalt); }
 .ledger__sub {
@@ -516,9 +517,9 @@ section { scroll-margin-top: 64px; }
   color: var(--cobalt);
   transition: background-color 0.3s ease;
 }
-.show[data-field="official"] { background: var(--field-1); }
+.show[data-field="official"] { background: var(--field-2); }   /* 三档场色在纸感底上做微差 */
 .show[data-field="company"] { background: var(--cobalt-tint); }
-.show[data-field="lab"] { background: var(--field-2); }
+.show[data-field="lab"] { background: var(--bg); }
 .show__head { position: relative; z-index: 2; max-width: 1380px; }
 .show__head h2 { font-size: var(--fs-4); }
 .show__sub { margin-top: 12px; font-size: var(--fs-l); max-width: 44ch; }
