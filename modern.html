@@ -148,17 +148,9 @@
             </button>
           </li>
           <li role="presentation">
-            <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="moon 中继 orbit deorbit 根服务器">
-              <span class="cmdlist__name">Moon 支持</span>
-              <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>6</kbd></span>
-              <span class="cmdlist__detail">orbit 挂载 · deorbit 卸载 · .moon 是它的文件。</span>
-              <span class="cmdlist__desc">orbit、deorbit 与 .moon 文件管理中继根服务器。</span>
-            </button>
-          </li>
-          <li role="presentation">
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="join leave 网络管理 清单">
               <span class="cmdlist__name">多网络管理</span>
-              <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>7</kbd></span>
+              <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>6</kbd></span>
               <span class="cmdlist__detail">join 加入、leave 退出，清单随 Planet 跟随。</span>
               <span class="cmdlist__desc">join / leave，网络清单随 Planet 跟随。</span>
             </button>
@@ -166,7 +158,7 @@
           <li role="presentation">
             <button class="cmdlist__row" type="button" role="option" aria-selected="false" data-keywords="特权 daemon macos 守护 隧道">
               <span class="cmdlist__name">特权守护</span>
-              <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>8</kbd></span>
+              <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>7</kbd></span>
               <span class="cmdlist__detail">daemon 常驻后台，GUI 不开、隧道照跑。</span>
               <span class="cmdlist__desc">macOS 上 daemon 常驻，GUI 不开、隧道照跑。</span>
             </button>
@@ -300,38 +292,40 @@ $ eval $(planet-port use company)</textarea>
         </div>
         <div class="tile tile--row">
           <h3>iOS App</h3>
-          <p>已发布</p>
+          <p>已发布 · v1.3.0</p>
           <p class="tile__note">planet 文件、URL、二维码均可添加。</p>
           <span class="tile__shot"><img src="/assets/screenshots/ios-import.webp" alt="iOS App 添加行星服务器界面截图：选择文件、扫描二维码或输入 URL" width="1206" height="2622" loading="lazy" /></span>
         </div>
         <div class="tile tile--row">
           <h3>Android App</h3>
-          <p>已发布</p>
+          <p>已发布 · v1.4.0</p>
           <p class="tile__note">网络在线状态与 peers 连接一目了然。</p>
           <span class="tile__shot"><img src="/assets/screenshots/android-settings.webp" alt="Android App 设置页截图：禁用 IPv6、同时连接上限、保持在线" width="440" height="782" loading="lazy" /></span>
         </div>
-        <div class="tile tile--row">
-          <h3>鸿蒙 App</h3>
-          <p>已发布</p>
-          <p class="tile__note">多 Planet 并存，网络清单随切换跟随。</p>
-        </div>
         <div class="tile tile--wide">
           <h3>macOS CLI</h3>
-          <p>已发布</p>
+          <p>已发布 · v0.1.1</p>
           <p class="tile__note">特权 daemon + 薄客户端，GUI 不开、隧道照跑。</p>
-        </div>
-        <div class="tile">
-          <h3>macOS GUI</h3>
-          <p>开发中</p>
-          <p class="tile__note">进度以仓库 releases 为准。</p>
         </div>
         <div class="tile tile--wide">
           <h3>Linux</h3>
-          <p>开发中</p>
+          <p>进行中</p>
+          <p class="tile__note">数据面已通（Ubuntu 实机验证），服务层与安装脚本适配中。</p>
         </div>
         <div class="tile tile--wide">
           <h3>Windows</h3>
+          <p>进行中</p>
+          <p class="tile__note">wintun 数据面与 NRPT DNS 已完成，Win11 实机验收中。</p>
+        </div>
+        <div class="tile tile--row">
+          <h3>鸿蒙 App</h3>
+          <p>调研中</p>
+          <p class="tile__note">迁移深度调研已完成，开发未启动。</p>
+        </div>
+        <div class="tile">
+          <h3>macOS GUI</h3>
           <p>规划中</p>
+          <p class="tile__note">进度以仓库 releases 为准。</p>
         </div>
       </div>
     </section>
@@ -340,9 +334,9 @@ $ eval $(planet-port use company)</textarea>
     <section class="roadmap" id="roadmap">
       <h2 class="roadmap__title" data-reveal>路线图</h2>
       <div class="roadmap__cols" data-reveal>
-        <p><strong>现在。</strong>三端 App（iOS / Android / 鸿蒙）与 macOS CLI 已发布。macOS CLI 以特权 daemon 运行，GUI 不开、隧道照跑。</p>
-        <p><strong>下一步。</strong>macOS GUI 与 Linux 客户端。两个平台同一套能力，发布节奏以仓库为准。</p>
-        <p><strong>规划。</strong>Windows 客户端。已列入计划，未设日期。</p>
+        <p><strong>现在。</strong>iOS、Android 与 macOS CLI 已发布。macOS CLI 以特权 daemon 运行，GUI 不开、隧道照跑。</p>
+        <p><strong>下一步。</strong>Linux 与 Windows 客户端。数据面已通、实机验收中，发布节奏以仓库为准。</p>
+        <p><strong>规划。</strong>macOS GUI 与鸿蒙 App。已列入计划，未设日期。</p>
       </div>
       <p class="roadmap__note">以仓库 releases 为准，不设虚构日期。</p>
     </section>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planet Port · 多 Planet 并存，一键切换</title>
-  <meta name="description" content="Planet Port：跨平台 ZeroTier 客户端。多 Planet 并存、随时切换、路由与 DNS 掌控、Moon 支持。" />
+  <meta name="description" content="Planet Port：跨平台 ZeroTier 客户端。多 Planet 并存、随时切换、路由与 DNS 掌控。" />
   <link rel="icon" href="/assets/planet-port-logo.webp" />
   <link rel="stylesheet" href="/styles/future.css" />
   <script>document.documentElement.classList.add('js')</script>
@@ -47,7 +47,7 @@
         <a class="btn" href="https://github.com/planet-port" target="_blank" rel="noopener">获取 Planet Port</a>
         <a class="hero__link" href="#roadmap">查看路线图</a>
       </div>
-      <p class="hero__facts">已发布：iOS · Android · 鸿蒙 · macOS CLI。macOS GUI 与 Linux 在路上。</p>
+      <p class="hero__facts">已发布：iOS · Android · macOS CLI。Linux 与 Windows 在路上，鸿蒙在调研。</p>
     </div>
   </header>
 
@@ -118,18 +118,6 @@
             <p class="band__hint">none 不接管 / network 走网络解析 / custom 自定义服务器；对系统 DNS 的改动随开关回滚。</p>
           </div>
           <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="DNS 掌控" data-reveal><span class="band__knob"></span></button>
-        </div>
-      </div>
-
-      <div class="band band--cobalt" data-band>
-        <div class="band__grid">
-          <div class="band__text" data-reveal>
-            <p class="band__line">Moon 支持。</p>
-            <p class="band__detail">orbit、deorbit 与 .moon 文件管理。</p>
-            <p class="band__effect">开 → Moon 已挂载</p>
-            <p class="band__hint">orbit 加入 · deorbit 退出 · .moon 中继文件导入即用；Moon 节点与当前 Planet 组合生效。</p>
-          </div>
-          <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="Moon 支持" data-reveal><span class="band__knob"></span></button>
         </div>
       </div>
     </section>
@@ -258,49 +246,49 @@
       <div class="tiles">
         <div class="tile tile--head" data-reveal>
           <h2>全平台行星管理</h2>
-          <p class="tile__sum">已发布 4 · 设计中 1 · 进行中 1 · 规划中 1</p>
+          <p class="tile__sum">已发布 3 · 进行中 2 · 调研中 1 · 规划中 1</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">iOS App</p>
-          <p class="tile__state">已发布</p>
+          <p class="tile__state">已发布 · v1.3.0</p>
           <p class="tile__note">多 Planet、切换、路由与 DNS 全量能力。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">Android App</p>
-          <p class="tile__state">已发布</p>
+          <p class="tile__state">已发布 · v1.4.0</p>
           <p class="tile__note">与 iOS 同源功能，含独立 DNS 设置页。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
-          <p class="tile__name">鸿蒙 App</p>
-          <p class="tile__state">已发布</p>
-          <p class="tile__note">HarmonyOS 上的完整客户端，多 Planet 切换与多网络同连。</p>
-        </div>
-        <div class="tile" data-reveal>
-          <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">macOS CLI</p>
-          <p class="tile__state">已发布</p>
+          <p class="tile__state">已发布 · v0.1.1</p>
           <p class="tile__note">特权 daemon + 薄客户端，GUI 不开、隧道照跑。</p>
-        </div>
-        <div class="tile" data-reveal>
-          <span class="tile__mark tile__mark--design" aria-hidden="true"></span>
-          <p class="tile__name">macOS GUI</p>
-          <p class="tile__state">设计中</p>
-          <p class="tile__note">全部能力 CLI 已覆盖，GUI 补图形操作。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--wip" aria-hidden="true"></span>
           <p class="tile__name">Linux</p>
           <p class="tile__state">进行中</p>
-          <p class="tile__note">CLI 与 daemon 先行，图形端随后。</p>
+          <p class="tile__note">数据面已通（Ubuntu 实机验证），服务层与安装脚本适配中。</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--wip" aria-hidden="true"></span>
+          <p class="tile__name">Windows</p>
+          <p class="tile__state">进行中</p>
+          <p class="tile__note">wintun 数据面与 NRPT DNS 已完成，Win11 实机验收中。</p>
+        </div>
+        <div class="tile" data-reveal>
+          <span class="tile__mark tile__mark--design" aria-hidden="true"></span>
+          <p class="tile__name">鸿蒙 App</p>
+          <p class="tile__state">调研中</p>
+          <p class="tile__note">迁移深度调研已完成，开发未启动。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--plan" aria-hidden="true"></span>
-          <p class="tile__name">Windows</p>
+          <p class="tile__name">macOS GUI</p>
           <p class="tile__state">规划中</p>
-          <p class="tile__note">进度以仓库 releases 为准。</p>
+          <p class="tile__note">全部能力 CLI 已覆盖，GUI 补图形操作。</p>
         </div>
       </div>
     </section>
@@ -312,17 +300,17 @@
         <li class="course__stop" data-reveal>
           <span class="course__node course__node--now" aria-hidden="true"></span>
           <h3>已发布</h3>
-          <p>三端 App 与 macOS CLI。</p>
+          <p>iOS、Android 与 macOS CLI。</p>
         </li>
         <li class="course__stop" data-reveal>
           <span class="course__node course__node--next" aria-hidden="true"></span>
           <h3>进行中</h3>
-          <p>macOS GUI 与 Linux 客户端。</p>
+          <p>Linux 与 Windows 客户端，一个数据面已通、一个在实机验收。</p>
         </li>
         <li class="course__stop" data-reveal>
           <span class="course__node course__node--far" aria-hidden="true"></span>
           <h3>规划中</h3>
-          <p>Windows 客户端。</p>
+          <p>macOS GUI 与鸿蒙 App。</p>
         </li>
       </ol>
       <p class="road__note" data-reveal>各平台进度以仓库 releases 为准，不在此处承诺日期。</p>
