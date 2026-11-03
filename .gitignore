@@ -3,3 +3,6 @@ dist/
 .DS_Store
 .superpowers/
 .taste-skill/
+
+# superpowers 工作产物（计划/规格）不入库，仅保留本地
+docs/superpowers/
