@@ -47,7 +47,7 @@
         <a class="btn" href="https://github.com/planet-port" target="_blank" rel="noopener">获取 Planet Port</a>
         <a class="hero__link" href="#roadmap">查看路线图</a>
       </div>
-      <p class="hero__facts">已发布：iOS · Android · macOS CLI。Linux 与 Windows 在路上，鸿蒙在调研。</p>
+      <p class="hero__facts">已发布：iOS · Android · macOS / Linux / Windows CLI。GUI 与鸿蒙在路上。</p>
     </div>
   </header>
 
@@ -246,7 +246,7 @@
       <div class="tiles">
         <div class="tile tile--head" data-reveal>
           <h2>全平台行星管理</h2>
-          <p class="tile__sum">已发布 3 · 进行中 2 · 调研中 1 · 规划中 1</p>
+          <p class="tile__sum">已发布 5 · 调研中 1 · 规划中 1</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
@@ -263,20 +263,20 @@
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">macOS CLI</p>
-          <p class="tile__state">已发布 · v0.1.1</p>
+          <p class="tile__state">已发布 · v0.3.0</p>
           <p class="tile__note">特权 daemon + 薄客户端，GUI 不开、隧道照跑。</p>
         </div>
         <div class="tile" data-reveal>
-          <span class="tile__mark tile__mark--wip" aria-hidden="true"></span>
-          <p class="tile__name">Linux</p>
-          <p class="tile__state">进行中</p>
-          <p class="tile__note">数据面已通（Ubuntu 实机验证），服务层与安装脚本适配中。</p>
+          <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
+          <p class="tile__name">Linux CLI</p>
+          <p class="tile__state">已发布 · v0.3.0</p>
+          <p class="tile__note">amd64 / arm64 产物，与 macOS 同源 CLI。</p>
         </div>
         <div class="tile" data-reveal>
-          <span class="tile__mark tile__mark--wip" aria-hidden="true"></span>
-          <p class="tile__name">Windows</p>
-          <p class="tile__state">进行中</p>
-          <p class="tile__note">wintun 数据面与 NRPT DNS 已完成，Win11 实机验收中。</p>
+          <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
+          <p class="tile__name">Windows CLI</p>
+          <p class="tile__state">已发布 · v0.3.0</p>
+          <p class="tile__note">wintun 数据面与 NRPT DNS，Win11 实测。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--design" aria-hidden="true"></span>
@@ -300,17 +300,17 @@
         <li class="course__stop" data-reveal>
           <span class="course__node course__node--now" aria-hidden="true"></span>
           <h3>已发布</h3>
-          <p>iOS、Android 与 macOS CLI。</p>
+          <p>iOS、Android 与 macOS / Linux / Windows CLI。</p>
         </li>
         <li class="course__stop" data-reveal>
           <span class="course__node course__node--next" aria-hidden="true"></span>
-          <h3>进行中</h3>
-          <p>Linux 与 Windows 客户端，一个数据面已通、一个在实机验收。</p>
+          <h3>规划中</h3>
+          <p>macOS GUI。Tauri 托盘常驻，作为既有 daemon 的薄客户端。</p>
         </li>
         <li class="course__stop" data-reveal>
           <span class="course__node course__node--far" aria-hidden="true"></span>
-          <h3>规划中</h3>
-          <p>macOS GUI 与鸿蒙 App。</p>
+          <h3>调研中</h3>
+          <p>鸿蒙 App。迁移调研已完成，开发未启动。</p>
         </li>
       </ol>
       <p class="road__note" data-reveal>各平台进度以仓库 releases 为准，不在此处承诺日期。</p>
