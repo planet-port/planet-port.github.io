@@ -44,10 +44,14 @@ export function pickDesktopAsset(assets, platform) {
 }
 
 const cacheKey = (repo) => `pp-release:${repo}`;
+// 校验缓存 data 形状：合法 JSON 但结构异常（如手改/旧版本写入）时按无缓存处理，
+// 避免 init 里 data.assets.find 抛 TypeError 导致动态区永久停「正在获取」。
+const isShaped = (d) =>
+  d && typeof d.tag === 'string' && Array.isArray(d.assets) && d.assets.every((n) => typeof n === 'string');
 const readCache = (repo, ignoreTTL = false) => {
   try {
     const c = JSON.parse(localStorage.getItem(cacheKey(repo)) || 'null');
-    if (c && (ignoreTTL || Date.now() - c.at < TTL)) return c.data;
+    if (c && typeof c.at === 'number' && isShaped(c.data) && (ignoreTTL || Date.now() - c.at < TTL)) return c.data;
   } catch (_) { /* 忽略损坏缓存 */ }
   return null;
 };
@@ -90,7 +94,7 @@ function makeLink(repo, tag, asset, label, cls) {
   return a;
 }
 
-async function init() {
+export async function init() {
   const box = document.querySelector('[data-downloads]');
   if (!box) return;
   const list = box.querySelector('[data-dl-list]');
@@ -159,5 +163,6 @@ async function init() {
 }
 
 if (typeof document !== 'undefined') {
-  init();
+  // 任何未预期异常都回落到静态兜底，不允许动态区永久停留「正在获取」。
+  init().catch(() => {});
 }
