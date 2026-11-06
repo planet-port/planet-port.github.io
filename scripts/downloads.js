@@ -69,6 +69,9 @@ async function fetchLatest(repo) {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const j = await res.json();
   const data = { tag: j.tag_name, assets: (j.assets || []).map((a) => a.name) };
+  // 网关/CDN 偶发返回畸形 JSON 时，未校验的 data 会渲染 undefined 链接并污染缓存。
+  // 与 readCache 同用一套 isShaped 校验，非法即走 stale 兜底链。
+  if (!isShaped(data)) throw new Error('malformed release payload');
   writeCache(repo, data);
   return { data, from: 'network' };
 }
