@@ -97,7 +97,7 @@
       <div class="intro__cols" data-reveal>
         <p><strong>多 Planet 并存。</strong>官方与私有 Planet 同时登记，互不覆盖，各自记住自己的网络与配置。网络清单跟着各自的 Planet 走，删除一份不影响其余。</p>
         <p><strong>一键切换。</strong><code>eval $(planet-port use company)</code> 即刻生效，终端、路由、DNS 同步跟随，无需重装。官方 Planet 始终在列，一条命令就能切回。</p>
-        <p><strong>多网络同连。</strong>不同 Planet 下的多个网络同时保持连接，内网与联调环境并行在线。切换 Planet 也不会打断已经在线的网络。</p>
+        <p><strong>多网络同连。</strong>App 在单隧道内让多个网络并行在线，切换 Planet 不打断已连接的网络；桌面端每网络一张虚拟网卡，由系统原生承载。</p>
         <p><strong>掌控路由与 DNS。</strong>routeViaZeroTier 与 dnsMode 逐网络设定，流量走哪条路、域名谁来解析，由你决定。dnsMode=none 时，解析完全交回系统处理。</p>
       </div>
     </section>

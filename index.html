@@ -89,9 +89,9 @@
         <div class="band__grid">
           <div class="band__text" data-reveal>
             <p class="band__line">多网络同连。</p>
-            <p class="band__detail">不同 Planet 下的网络并行在线。</p>
+            <p class="band__detail">不同 Planet 下的网络并行在线，切换互不打断。</p>
             <p class="band__effect">开 → 5 个网络在线</p>
-            <p class="band__hint">join 后网络常驻列表，可分别 leave；网络 id 来自 ZeroTier Central，join 后等待授权。</p>
+            <p class="band__hint">App 在单隧道内并行承载多网络；桌面端每网络一张虚拟网卡，由系统原生承载。join 后可分别 leave，网络 id 来自 ZeroTier Central。</p>
           </div>
           <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="多网络同连" data-reveal><span class="band__knob"></span></button>
         </div>
@@ -140,8 +140,8 @@
           </div>
           <div class="hw__clause" data-clause="3">
             <h3 class="hw__word">联网</h3>
-            <p class="hw__text">多个网络可同时在线。</p>
-            <p class="hw__more">join 后等待管理员授权，授权前后状态都在列表里可见；leave 随时可退。</p>
+            <p class="hw__text">join 多个网络，并行在线。</p>
+            <p class="hw__more">桌面端每网络一张虚拟网卡，系统原生承载；join 后等待管理员授权，leave 随时可退。</p>
             <code>planet-port join 8056c2e21c000001</code>
           </div>
           <div class="hw__clause" data-clause="4">
