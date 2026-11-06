@@ -1024,3 +1024,10 @@ summary:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* ---------- 下载区：GitHub API 动态渲染 ---------- */
+.dl__primary { margin: 0; min-height: 48px; }
+.dl__grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+.dl__grid a.btn { height: 40px; padding: 0 16px; border: 1px solid currentColor; font-size: 14px; }
+.dl__grid a.btn:hover { opacity: 0.8; }
+.dl__ver { font-size: 14px; opacity: 0.75; margin: 8px 0 0; }

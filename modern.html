@@ -378,6 +378,11 @@ $ eval $(planet-port use company)</textarea>
       <div class="cta__left">
         <h2 class="cta__close">第一步<br />已经打开</h2>
         <p class="cta__sentence">选一个 planet 文件，起个名字，就完成了。按钮会带你前往 GitHub 仓库，从 Releases 下载最新版本。</p>
+        <div class="dl" data-downloads hidden>
+          <p class="dl__primary" data-dl-primary></p>
+          <p class="dl__ver" data-dl-note>正在获取最新版本…</p>
+          <div class="dl__grid" data-dl-list></div>
+        </div>
         <a class="btn btn--ink" href="https://github.com/planet-port" target="_blank" rel="noopener">前往 GitHub 仓库</a>
         <pre class="cta__next" data-ui><span class="cta__ps">$</span>planet-port planet add ./company.planet --name company
 已添加 Planet company</pre>
@@ -435,5 +440,6 @@ $ eval $(planet-port use company)</textarea>
   </footer>
 
   <script type="module" src="/scripts/modern.js"></script>
+  <script type="module" src="/scripts/downloads.js"></script>
 </body>
 </html>
