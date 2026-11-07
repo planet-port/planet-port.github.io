@@ -96,7 +96,7 @@
       <p class="intro__lead" data-reveal>只留一个入口，就意味着每次换环境都重新配置。Planet Port 把所有入口留在手边，切换只是一条命令。</p>
       <div class="intro__cols" data-reveal>
         <p><strong>多 Planet 并存。</strong>官方与私有 Planet 同时登记，互不覆盖，各自记住自己的网络与配置。网络清单跟着各自的 Planet 走，删除一份不影响其余。</p>
-        <p><strong>一键切换。</strong><code>eval $(planet-port use company)</code> 即刻生效，终端、路由、DNS 同步跟随，无需重装。官方 Planet 始终在列，一条命令就能切回。</p>
+        <p><strong>一键切换。</strong><code>eval $(planet-port use company)</code> 即刻生效，本终端的后续命令默认落在它名下，连接与路由不受影响，无需重装。官方 Planet 导入后在列，一条命令就能切回。</p>
         <p><strong>多网络同连。</strong>App 在单隧道内让多个网络并行在线，切换 Planet 不打断已连接的网络；桌面端每网络一张虚拟网卡，由系统原生承载。</p>
         <p><strong>掌控路由与 DNS。</strong>routeViaZeroTier 与 dnsMode 逐网络设定，流量走哪条路、域名谁来解析，由你决定。dnsMode=none 时，解析完全交回系统处理。</p>
       </div>
@@ -112,15 +112,15 @@
               <span class="cmdlist__name">添加 Planet</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>1</kbd></span>
               <span class="cmdlist__detail">文件或 URL 均可，--name 起别名。</span>
-              <span class="cmdlist__desc"><code>planet add &lt;file|URL&gt; --name &lt;别名&gt;</code> 把私有根服务器收进列表，官方 Planet 原样保留。</span>
+              <span class="cmdlist__desc"><code>planet-port add &lt;file|URL&gt; --name &lt;别名&gt;</code> 把根服务器收进列表，官方 Planet 也一样导入。</span>
             </button>
           </li>
           <li role="presentation">
-            <button class="cmdlist__row" type="button" role="option" aria-selected="true" data-keywords="切换 planet use 全局 生效 shell">
+            <button class="cmdlist__row" type="button" role="option" aria-selected="true" data-keywords="切换 planet use shell 默认 终端">
               <span class="cmdlist__name">切换 Planet</span>
               <span class="cmdlist__keys" aria-hidden="true"><kbd>⌘</kbd><kbd>2</kbd></span>
-              <span class="cmdlist__detail">导出到 shell 环境，路由与 DNS 跟着换。</span>
-              <span class="cmdlist__desc"><code>eval $(planet-port use &lt;别名&gt;)</code> 一条命令，全局生效。</span>
+              <span class="cmdlist__detail">只切本终端的默认 Planet，网络连接不变。</span>
+              <span class="cmdlist__desc"><code>eval $(planet-port use &lt;别名&gt;)</code> 后，本 shell 的变更类命令默认落在它名下。</span>
             </button>
           </li>
           <li role="presentation">
@@ -174,15 +174,15 @@
           <h2 class="how__title" data-reveal>切换 Planet</h2>
           <div class="how__step" data-step="0">
             <h3>登记 Planet。</h3>
-            <p><code>planet-port planet add ./company.planet --name company</code> 收进列表，官方 Planet 原样保留。URL 也能直接登记，别名用 --name 指定。</p>
+            <p><code>planet-port add ./company.planet --name company</code> 收进列表，官方 Planet 同样一条命令导入。URL 也能直接登记，别名用 --name 指定。</p>
           </div>
           <div class="how__step" data-step="1">
             <h3>切换入口。</h3>
-            <p><code>eval $(planet-port use company)</code> 之后所有操作指向这份 Planet。官方 Planet 始终在列，切回也是一条命令。</p>
+            <p><code>eval $(planet-port use company)</code> 之后本终端的操作指向这份 Planet。官方 Planet 导入后在列，切回也是一条命令。</p>
           </div>
           <div class="how__step" data-step="2">
             <h3>加入网络。</h3>
-            <p><code>planet-port join 8056c2e21c000001</code> 连上目标网络，多个可同时在线。网络与 peers 状态在 CLI 和 App 里一致。</p>
+            <p><code>planet-port join 8056c2e21c000001</code> 连上目标网络，多个可同时在线。网络与 peers 状态在 CLI 里随时可查。</p>
           </div>
         </div>
         <div class="how__right">
@@ -194,7 +194,7 @@
                 <div class="app__planets" role="group" aria-label="选择当前 Planet">
                   <button class="app__planet" type="button" data-planet="official" data-nets="2" data-peers="5" aria-pressed="false">
                     <span class="app__pname">official<span class="app__badge">新增</span></span>
-                    <span class="app__pmeta">内置 · 2 网络</span>
+                    <span class="app__pmeta">official.planet · 2 网络</span>
                   </button>
                   <button class="app__planet" type="button" data-planet="company" data-nets="3" data-peers="7" aria-pressed="true">
                     <span class="app__pname">company<span class="app__badge">新增</span></span>
@@ -253,10 +253,10 @@
     <!-- showcase：输入一半 / 输出一半 -->
     <section class="show" aria-label="输入与输出">
       <div class="show__dark">
-        <textarea class="show__code" data-show-input aria-label="命令输入" spellcheck="false" rows="3">$ planet-port planet add ./company.planet --name company
+        <textarea class="show__code" data-show-input aria-label="命令输入" spellcheck="false" rows="3">$ planet-port add ./company.planet --name company
 $ eval $(planet-port use company)</textarea>
-        <pre class="show__out">已添加 Planet company
-当前 Planet → company</pre>
+        <pre class="show__out">added planet "company" (id 149604618) → stopped
+# default planet set to "company" (this shell only)</pre>
         <p class="show__h show__h-dark">一条命令，</p>
       </div>
       <div class="show__light">
@@ -267,7 +267,7 @@ $ eval $(planet-port use company)</textarea>
             </thead>
             <tbody>
               <tr data-planet="official">
-                <td>official</td><td>内置</td><td>2</td><td class="ptable__state">在列</td>
+                <td>official</td><td>official.planet</td><td>2</td><td class="ptable__state">在列</td>
               </tr>
               <tr data-planet="company" class="is-current">
                 <td>company</td><td>company.planet</td><td>3</td><td class="ptable__state">当前</td>
@@ -304,17 +304,17 @@ $ eval $(planet-port use company)</textarea>
         </div>
         <div class="tile tile--wide">
           <h3>macOS CLI</h3>
-          <p>已发布 · v0.3.1</p>
+          <p>已发布 · v0.3.2</p>
           <p class="tile__note">特权 daemon + 薄客户端，GUI 不开、隧道照跑。</p>
         </div>
         <div class="tile tile--wide">
           <h3>Linux CLI</h3>
-          <p>已发布 · v0.3.1</p>
+          <p>已发布 · v0.3.2</p>
           <p class="tile__note">amd64 / arm64 产物，与 macOS 同源 CLI。</p>
         </div>
         <div class="tile tile--wide">
           <h3>Windows CLI</h3>
-          <p>已发布 · v0.3.1</p>
+          <p>已发布 · v0.3.2</p>
           <p class="tile__note">wintun 数据面与 NRPT DNS，Win11 实测。</p>
         </div>
         <div class="tile tile--row">
@@ -384,8 +384,8 @@ $ eval $(planet-port use company)</textarea>
           <div class="dl__grid" data-dl-list></div>
         </div>
         <a class="btn btn--ink" href="https://github.com/planet-port" target="_blank" rel="noopener">前往 GitHub 仓库</a>
-        <pre class="cta__next" data-ui><span class="cta__ps">$</span>planet-port planet add ./company.planet --name company
-已添加 Planet company</pre>
+        <pre class="cta__next" data-ui><span class="cta__ps">$</span>planet-port add ./company.planet --name company
+added planet "company" (id 149604618) → stopped</pre>
       </div>
       <div class="cta__right">
         <form class="dialog" data-ui data-reveal novalidate>

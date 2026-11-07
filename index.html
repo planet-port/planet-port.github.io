@@ -66,7 +66,7 @@
             <h2 class="band__line">多 Planet 并存。</h2>
             <p class="band__detail">官方与私有 Planet 同时登记，互不覆盖。</p>
             <p class="band__effect">开 → 3 份 Planet 在列</p>
-            <p class="band__hint">official 为内置保留，私有 planet 文件跟随项目目录，use 只改指向、不动文件。</p>
+            <p class="band__hint">official 同样一条命令导入，planet 文件导入时收进各自数据目录，use 只改指向、不动文件。</p>
           </div>
           <img class="band__shot" src="/assets/screenshots/ios-home.webp" alt="iOS 端 Planet 列表截图" width="180" height="180" loading="lazy" data-reveal />
           <button class="band__switch" type="button" role="switch" aria-checked="true" data-switch aria-label="多 Planet 并存" data-reveal><span class="band__knob"></span></button>
@@ -77,9 +77,9 @@
         <div class="band__grid">
           <div class="band__text" data-reveal>
             <p class="band__line">一键切换。</p>
-            <p class="band__detail"><code>eval $(planet-port use company)</code> 全局生效。</p>
+            <p class="band__detail"><code>eval $(planet-port use company)</code> 本终端即刻生效。</p>
             <p class="band__effect">开 → 当前：company</p>
-            <p class="band__hint">写入当前 Planet 指向，CLI 与 GUI 读同一份配置；join / leave 都作用于当前 Planet。</p>
+            <p class="band__hint">只设当前 shell 的环境变量；join / leave 等变更类命令默认落在当前 Planet。</p>
           </div>
           <button class="band__switch" type="button" role="switch" aria-checked="true" data-switch aria-label="一键切换" data-reveal><span class="band__knob"></span></button>
         </div>
@@ -91,7 +91,7 @@
             <p class="band__line">多网络同连。</p>
             <p class="band__detail">不同 Planet 下的网络并行在线，切换互不打断。</p>
             <p class="band__effect">开 → 5 个网络在线</p>
-            <p class="band__hint">App 在单隧道内并行承载多网络；桌面端每网络一张虚拟网卡，由系统原生承载。join 后可分别 leave，网络 id 来自 ZeroTier Central。</p>
+            <p class="band__hint">App 在单隧道内并行承载多网络；桌面端每网络一张虚拟网卡，由系统原生承载。join 后可分别 leave，网络 id 以建网方下发为准。</p>
           </div>
           <button class="band__switch" type="button" role="switch" aria-checked="false" data-switch aria-label="多网络同连" data-reveal><span class="band__knob"></span></button>
         </div>
@@ -128,14 +128,14 @@
         <div class="hw__clauses">
           <div class="hw__clause" data-clause="1">
             <h3 class="hw__word">添加</h3>
-            <p class="hw__text">把 Planet 收进列表，官方 Planet 原样保留。</p>
-            <p class="hw__more">--name 起别名，planet 文件原地不动；同名会提示而不是覆盖。</p>
-            <code>planet-port planet add ./company.planet --name company</code>
+            <p class="hw__text">把 Planet 收进列表，官方与私有一样导入。</p>
+            <p class="hw__more">--name 起别名，文件导入时收进数据目录；同名会提示而不是覆盖。</p>
+            <code>planet-port add ./company.planet --name company</code>
           </div>
           <div class="hw__clause" data-clause="2">
             <h3 class="hw__word">切换</h3>
-            <p class="hw__text">一条命令全局生效，之后的操作都指向这份 Planet。</p>
-            <p class="hw__more">切换不改网络成员身份，只换根服务器指向；再次 use 即切回。</p>
+            <p class="hw__text">一条命令，本终端之后的操作都指向这份 Planet。</p>
+            <p class="hw__more">只影响后续命令的落点，不改网络连接与成员身份；再次 use 即切回。</p>
             <code>eval $(planet-port use company)</code>
           </div>
           <div class="hw__clause" data-clause="3">
@@ -162,7 +162,7 @@
             <div class="ledger__row">
               <span class="ledger__dot" aria-hidden="true"></span>
               <span class="ledger__name">official</span>
-              <span class="ledger__src">内置</span>
+              <span class="ledger__src">official.planet</span>
               <span class="ledger__num">2 网络</span>
             </div>
             <div class="ledger__row ledger__row--cur">
@@ -226,7 +226,7 @@
         <button class="selector__planet" type="button" data-planet="official" aria-pressed="false">
           <span class="selector__name">official</span>
           <span class="selector__data">2 网络 · 5 peers</span>
-          <span class="selector__src">内置</span>
+          <span class="selector__src">official.planet</span>
         </button>
         <button class="selector__planet is-active" type="button" data-planet="company" aria-pressed="true">
           <span class="selector__name">company</span>
@@ -263,19 +263,19 @@
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">macOS CLI</p>
-          <p class="tile__state">已发布 · v0.3.1</p>
+          <p class="tile__state">已发布 · v0.3.2</p>
           <p class="tile__note">特权 daemon + 薄客户端，GUI 不开、隧道照跑。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">Linux CLI</p>
-          <p class="tile__state">已发布 · v0.3.1</p>
+          <p class="tile__state">已发布 · v0.3.2</p>
           <p class="tile__note">amd64 / arm64 产物，与 macOS 同源 CLI。</p>
         </div>
         <div class="tile" data-reveal>
           <span class="tile__mark tile__mark--on" aria-hidden="true"></span>
           <p class="tile__name">Windows CLI</p>
-          <p class="tile__state">已发布 · v0.3.1</p>
+          <p class="tile__state">已发布 · v0.3.2</p>
           <p class="tile__note">wintun 数据面与 NRPT DNS，Win11 实测。</p>
         </div>
         <div class="tile" data-reveal>
